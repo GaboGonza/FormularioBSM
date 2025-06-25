@@ -26,13 +26,13 @@ app.post("/enviar-formulario", async (req, res) => {
 
     // TIPO DE FORMULARIO AL PRINCIPIO
     const tipoFormulario = data.form_type || "Desconocido";
-    doc.font('Helvetica-Bold').fontSize(16).text(`Formulario: ${tipoFormulario}`);
+    doc.font('Helvetica-Bold').fontSize(16).text(`Category: ${tipoFormulario}`);
     doc.moveDown(1);
 
     const camposOrdenados = [
       "folio", "client", "date", "cordinador", "proyect",
       "milestones", "designation", "problem", "goal",
-      "supplier", "location", "contact", "nominated_capacity",
+      "supplier", "location", "contact", "EBR","nominated_capacity",
       "current_capacity", "contact_vwm", "visit_date"
     ];
 
