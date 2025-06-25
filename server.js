@@ -26,7 +26,7 @@ app.post("/enviar-formulario", async (req, res) => {
 
     // TIPO DE FORMULARIO AL PRINCIPIO
     const tipoFormulario = data.form_type || "Desconocido";
-    doc.font('Helvetica-Bold').fontSize(16).fillColor('blue').text(`Formulario: ${tipoFormulario}`);
+    doc.font('Helvetica-Bold').fontSize(16).text(`Formulario: ${tipoFormulario}`);
     doc.moveDown(1);
 
     const camposOrdenados = [
