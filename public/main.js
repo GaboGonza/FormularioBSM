@@ -146,6 +146,8 @@ form.addEventListener("submit", function(event) {
     alert(data.message);
 
     this.reset();
+    window.location.href = "/";
+
   })
   .catch(err => {
     console.error("Error al enviar:", err);

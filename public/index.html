@@ -139,17 +139,15 @@
                 <table border="1" id="partsTable">
                     <thead>
                         <tr class="table-data">
-                            <th>1. No.</th>
-                            <th>2. Part Number</th>
-                            <th>3. Quantity Delivered</th>
-                            <th>4. Models Assembled In</th>
-                            <th>5. Refurbish (Yes or No)</th>
-                            <th>6. Estimated Quantity Until EOP</th>
+                            <th>1. Part Number</th>
+                            <th>2. Quantity Delivered</th>
+                            <th>3. Models Assembled In</th>
+                            <th>4. Refurbish (Yes or No)</th>
+                            <th>5. Estimated Quantity Until EOP</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input type="number" name="no.[]" required></td>
                             <td><input type="text" name="part_number[]" required></td>
                             <td><input type="number" name="quantity_delivered[]" required></td>
                             <td><input type="text" name="models_assembled[]" required></td>
@@ -176,7 +174,7 @@
         <div id="formularioCapacidades" class="hidden section">
             <p class="title-formulario"><strong>M-BSM support (Request Blue Sheet)</strong><br><strong>Capacity
                     Evaluation</strong></p>
-            <form id="formularioEvaluacionCapacidades"  action="/enviar-formulario" method="POST">
+            <form id="formularioEvaluacionCapacidades">
                 <label><strong>Capacity Evaluation</strong></label>
                 <label>Folio: <input type="text" name="folio" id="folio2" readonly></label>
                 <label>Client: <input type="text" name="client" required placeholder="Name"></label>
@@ -217,7 +215,7 @@
         <div id="formularioOtros" class="hidden section">
             <p class="title-formulario"><strong>M-BSM support (Request Blue Sheet)</strong><br><strong>Others</strong>
             </p>
-            <form id="formularioEvaluacionOtros"  action="/enviar-formulario" method="POST">
+            <form id="formularioEvaluacionOtros" >
                 <label><strong>Others</strong></label>
                 <label>Folio: <input type="text" name="folio" id="folio3" readonly></label>
                 <label>Client: <input type="text" name="client" placeholder="Name"></label>
