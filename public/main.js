@@ -144,6 +144,8 @@ form.addEventListener("submit", function(event) {
   .then(response => response.json())
   .then(data => {
     alert(data.message);
+
+    this.reset();
   })
   .catch(err => {
     console.error("Error al enviar:", err);
