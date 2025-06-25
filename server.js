@@ -48,12 +48,12 @@ app.post("/enviar-formulario", async (req, res) => {
     // Si hay tabla
     if (Array.isArray(data["part_number[]"]) && data["part_number[]"].length > 0) {
       doc.addPage();
-      doc.font('Helvetica-Bold').fontSize(14).text("🧾 Part Details Table");
+      doc.font('Helvetica-Bold').fontSize(14).text("Part Details Table");
       doc.moveDown(1);
 
       data["part_number[]"].forEach((_, i) => {
-        doc.font('Helvetica-Bold').text(`Part #${i + 1}`);
-        doc.font('Helvetica').text(`Part Number: ${data["part_number[]"][i] || ''}`);
+        doc.font('Helvetica-Bold').fontSize(16).text(`Part #${i + 1}`);
+        doc.font('Helvetica-Bold').text(`Part Number: ${data["part_number[]"][i] || ''}`);
         doc.text(`Quantity Delivered: ${data["quantity_delivered[]"][i] || ''}`);
         doc.text(`Models Assembled In: ${data["models_assembled[]"][i] || ''}`);
         doc.text(`Refurbish: ${data["refurbish_date[]"][i] || ''}`);
@@ -75,7 +75,7 @@ app.post("/enviar-formulario", async (req, res) => {
 
       const mailOptions = {
         from: process.env.EMAIL_USER,
-        to: "ggonza1999@gmail.com",
+        to: "gabriel.morales@proveed-vw.com.mx",
         subject: "Formulario Blue Sheet recibido",
         text: "Adjunto encontrarás el formulario llenado.",
         attachments: [{
