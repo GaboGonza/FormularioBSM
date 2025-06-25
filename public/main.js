@@ -127,46 +127,55 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-const form = document.getElementById("formularioEvaluacionHerramentales");
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
 
-  const formData = new FormData(this);
-  const plainObject = {};
 
-  formData.forEach((value, key) => {
-    if (plainObject[key]) {
-      // Si ya existe, conviértelo en array o agrega al array
-      if (Array.isArray(plainObject[key])) {
-        plainObject[key].push(value);
+function setupFormHandler(formId) {
+  const form = document.getElementById(formId);
+  if (!form) return;
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+    const plainObject = {};
+
+    formData.forEach((value, key) => {
+      if (plainObject[key]) {
+        if (Array.isArray(plainObject[key])) {
+          plainObject[key].push(value);
+        } else {
+          plainObject[key] = [plainObject[key], value];
+        }
       } else {
-        plainObject[key] = [plainObject[key], value];
+        plainObject[key] = value;
       }
-    } else {
-      plainObject[key] = value;
-    }
+    });
+
+    fetch("/enviar-formulario", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(plainObject)
+    })
+    .then(response => response.json())
+    .then(data => {
+      alert(data.message);
+      this.reset();
+      window.location.href = "/"; // O ajusta a tu ruta inicial
+    })
+    .catch(err => {
+      console.error("Error al enviar:", err);
+      alert("Hubo un error al enviar el formulario");
+    });
   });
+}
 
-  fetch("/enviar-formulario", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(plainObject)
-  })
-  .then(response => response.json())
-  .then(data => {
-    alert(data.message);
+// Configura los 3 formularios
+setupFormHandler("formularioEvaluacionHerramentales");
+setupFormHandler("formularioEvaluacionCapacidades");
+setupFormHandler("formularioEvaluacionOtros");
 
-    this.reset();
-    window.location.href = "/";
-
-  })
-  .catch(err => {
-    console.error("Error al enviar:", err);
-    alert("Hubo un error al enviar el formulario");
-  });
-});
 
 
 

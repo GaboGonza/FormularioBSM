@@ -6,26 +6,16 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
-const port = process.env.PORT || 3000;  // Render usará el puerto dinámico
+const port = process.env.PORT || 3000;
 
-// Servir archivos estáticos (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, "public")));
-
-// Middleware para parsear datos de formularios y JSON
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Ruta principal para servir el HTML (para que Render no marque 404)
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
-// Endpoint para procesar el formulario
 app.post("/enviar-formulario", async (req, res) => {
   try {
     const data = req.body;
 
-    // Crear PDF
     const doc = new PDFDocument();
     const filePath = path.join(__dirname, `formulario_${Date.now()}.pdf`);
     const writeStream = fs.createWriteStream(filePath);
@@ -50,13 +40,13 @@ app.post("/enviar-formulario", async (req, res) => {
       }
     });
 
-    const longitud = (data["part_number[]"] || []).length;
-    if (longitud > 0) {
+    // Si hay tabla
+    if (Array.isArray(data["part_number[]"]) && data["part_number[]"].length > 0) {
       doc.addPage();
       doc.font('Helvetica-Bold').fontSize(14).text("🧾 Part Details Table");
       doc.moveDown(1);
 
-      for (let i = 0; i < longitud; i++) {
+      data["part_number[]"].forEach((_, i) => {
         doc.font('Helvetica-Bold').text(`Part #${i + 1}`);
         doc.font('Helvetica').text(`Part Number: ${data["part_number[]"][i] || ''}`);
         doc.text(`Quantity Delivered: ${data["quantity_delivered[]"][i] || ''}`);
@@ -64,7 +54,7 @@ app.post("/enviar-formulario", async (req, res) => {
         doc.text(`Refurbish: ${data["refurbish_date[]"][i] || ''}`);
         doc.text(`Estimated Quantity Until EOP: ${data["estimated_quantity[]"][i] || ''}`);
         doc.moveDown(1);
-      }
+      });
     }
 
     doc.end();
@@ -90,7 +80,6 @@ app.post("/enviar-formulario", async (req, res) => {
       };
 
       await transporter.sendMail(mailOptions);
-
       fs.unlinkSync(filePath);
 
       res.status(200).json({ success: true, message: "Formulario enviado por correo con éxito." });
