@@ -48,12 +48,12 @@ app.post("/enviar-formulario", async (req, res) => {
     // Si hay tabla
     if (Array.isArray(data["part_number[]"]) && data["part_number[]"].length > 0) {
       doc.addPage();
-      doc.font('Helvetica-Bold').fontSize(14).text("Part Details Table");
+      doc.font('Helvetica-Bold').fontSize(16).text("Part Details Table");
       doc.moveDown(1);
 
       data["part_number[]"].forEach((_, i) => {
-        doc.font('Helvetica-Bold').fontSize(16).text(`Part #${i + 1}`);
-        doc.font('Helvetica-Bold').text(`Part Number: ${data["part_number[]"][i] || ''}`);
+        doc.font('Helvetica-Bold').text(`No. #${i + 1}`);
+        doc.font('Helvetica').text(`Part Number: ${data["part_number[]"][i] || ''}`);
         doc.text(`Quantity Delivered: ${data["quantity_delivered[]"][i] || ''}`);
         doc.text(`Models Assembled In: ${data["models_assembled[]"][i] || ''}`);
         doc.text(`Refurbish: ${data["refurbish_date[]"][i] || ''}`);
