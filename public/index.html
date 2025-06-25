@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request for Support</title>
+    <link rel="stylesheet" href="css/font.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="inicio">
+            <h1>🔵Blue Sheet / BSM Support Request</h1>
+            <br>
+            <br>
+            <p class="description">📝✏️Management and evaluation of support requests of the 'Blue Sheet' type for Series
+                parts,
+                with a primary focus on assessing manufacturing capabilities, tooling evaluations, and other related
+                technical criteria.
+                This process aims to ensure that all support requests are thoroughly analyzed in terms of feasibility,
+                resource availability,
+                and alignment with production standards, while also facilitating cross-functional collaboration between
+                engineering, quality,
+                and procurement teams to drive informed decision-making and continuous improvement.</p>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <img src="img/request.png" style="max-width: 30%; height: auto;">
+            </div>
+            <br>
+            <button onclick="mostrarFiltro1()">Enter</button>
+        </div>
+
+
+
+
+        <div id="selectorEvaluacion" class="section_small hidden">
+            <h2>Evaluations</h2>
+            <br>
+            <br>
+            <div class="evaluation-options">
+                <div class="evaluation-card" onclick="showSection('herramentales')">
+                    <h3>Tool-based Evaluation</h3>
+                    <p>We request support for the evaluation of specific tooling
+                        with the objective of verifying the need for refurbishing, as well as conducting a general
+                        assessment of the tool's usage and maintenance history since the Start of Production (SOP).</p>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <img src="img/herra.png" style="max-width: 80%; height: auto;">
+                    </div>
+                </div>
+                <div class="evaluation-card" onclick="showSection('capacidad')">
+                    <h3>Capacity Evaluation</h3>
+                    <p>We request support for the evaluation and analysis of the production performance of suppliers
+                        who have been reported with supply issues due to lack of capacity in production equipment,
+                        process-related problems,
+                        cycle time verification, among other factors.</p>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <img src="img/calidad.png" style="max-width: 80%; height: auto;">
+                    </div>
+                </div>
+                <div class="evaluation-card" onclick="showSection('otros')">
+                    <h3>Others</h3>
+                    <p>Handle additional or special evaluation requests.
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                        Ut consectetur dolorum facilis dicta alias quaerat quibusdam facere.
+                        Eos error ipsam consectetur omnis quos sequi temporibus voluptates! Dolores cum obcaecati nihil.
+                    </p>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <img src="img/otros.png" style="max-width: 80%; height: auto;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="filtro2" class="hidden section_small">
+            <label class="title">Is it a CoP part?</label>
+            <br>
+            <button onclick="respuestaCoP(true)">Yes</button>
+            <button onclick="respuestaCoP(false)">No</button>
+        </div>
+
+        <div id="filtro3" class="hidden section_small">
+            <label class="title">Has the quantity of tools delivered to date exceeded 800T?</label>
+            <br>
+            <button onclick="respuestaCantidad(true)">Yes</button>
+            <button onclick="respuestaCantidad(false)">No</button>
+        </div>
+
+        <div id="mensajeNoApoyo" class="hidden section_small">
+            <h4><strong>Support from M-BSM is not required.</strong></h4>
+            <p>-Please contact M-BSX to follow the appropriate steps.</p>
+            <p>-Contact the representative of that area.</p>
+            <p>*OCHOA MARTINEZ JESUS ANTONIO</p>
+            <div style="text-align: center; margin-top: 20px;">
+                <img src="img/img1.png" alt="Logo MBSX" style="max-width: 100%; height: auto;">
+            </div>
+            <button onclick="exit()">Exit</button>
+        </div>
+
+        <div id="formularioHerramentales" class="hidden section">
+            <p class="title-formulario"><strong>M-BSM support (Request Blue Sheet)</strong> <br><strong>Tool-based
+                    Evaluation</strong></p>
+            <form id="formularioEvaluacionHerramentales">
+                <label><strong>Tool-based Evaluation</strong></label>
+                <label>Folio: <input type="text" name="folio" id="folio1" readonly></label>
+                <label>Client: <input type="text" name="client" required placeholder="Name"></label>
+                <label>Date:<input type="date" name="date" id="date1" disabled></label>
+
+                <label>Coordinador/Manager: <input type="text" name="cordinador"
+                        placeholder="Coordinador/Manager"></label>
+                <label>Proyect: <input type="text" name="proyect" placeholder="Proyect" required></label>
+                <label>Milestones(FOT, VFF, PVS, Note 3, Note 1, VMG, Serie 0, SOP): <input type="text"
+                        name="milestones" placeholder="FOT, VFF, PVS, Note 3, Note 1, VMG, Serie 0, SOP"
+                        required></label>
+                <label>Part designation/part number<input type="text" name="designation"
+                        placeholder="Part designation/part number" required></label>
+                <label>Statement of problem:<input type="text" name="problem" placeholder="Statement of problem"
+                        required></label>
+                <label>Goal of visit / Expected results: <input type="text" name="goal"
+                        placeholder="Goal of visit / Expected results" required></label>
+                <label>Supplier: <input type="text" name="supplier" placeholder="Supplier" required></label>
+                <label>Location of visit (tool shop): <input type="text" name="location" placeholder="Location"
+                        required></label>
+                <label>Contact data: (phone number, e-mail)<input type="text" name="contact"
+                        placeholder="phone number, e-mail" required></label>
+                <br>
+                <hr>
+                <label>Nominated capacity: <input type="number" name="nominated_capacity" placeholder="Nominated capacity"
+                        required></label>
+                <label>Current capacity check (BKM): <input type="number" name="current_capacity"
+                        placeholder="Current capacity check" required></label>
+                <label><strong>----------------------------------------------------------------------------------Table-------------------------------------------------------------------------------------</strong></label>
+
+                <!-- Table inserted here -->
+                <table border="1" id="partsTable">
+                    <thead>
+                        <tr class="table-data">
+                            <th>1. No.</th>
+                            <th>2. Part Number</th>
+                            <th>3. Quantity Delivered</th>
+                            <th>4. Models Assembled In</th>
+                            <th>5. Refurbish (Yes or No)</th>
+                            <th>6. Estimated Quantity Until EOP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="number" name="no.[]" required></td>
+                            <td><input type="text" name="part_number[]" required></td>
+                            <td><input type="number" name="quantity_delivered[]" required></td>
+                            <td><input type="text" name="models_assembled[]" required></td>
+                            <td><input type="text" name="refurbish_date[]" required></td>
+                            <td><input type="number" name="estimated_quantity[]" required></td>
+                        </tr>
+                        <!-- Puedes duplicar esta fila para más entradas -->
+                    </tbody>
+                </table>
+
+                <button type="button" onclick="addRow()">Add Another Row</button>
+
+
+                <label>Contact persons VWM (QA, TEC, Logistics, Purchase): <input type="text" name="contact_vwm"
+                        placeholder="QA, TEC, Logistics, Purchase" required></label>
+                <label>Desired visit completion date: <input type="date" name="visit_date" placeholder="Date"
+                        required></label>
+                <br><br>
+                <button type="submit">Send</button>
+                <button onclick="exit()" type="button">Exit</button>
+            </form>
+        </div>
+
+        <div id="formularioCapacidades" class="hidden section">
+            <p class="title-formulario"><strong>M-BSM support (Request Blue Sheet)</strong><br><strong>Capacity
+                    Evaluation</strong></p>
+            <form id="formularioEvaluacionCapacidades">
+                <label><strong>Capacity Evaluation</strong></label>
+                <label>Folio: <input type="text" name="folio" id="folio2" readonly></label>
+                <label>Client: <input type="text" name="client" required placeholder="Name"></label>
+                <label>Date:<input type="date" name="date2" id="date2" placeholder="Date" disabled></label>
+                <label>Coordinador/Manager: <input type="text" name="cordinador"
+                        placeholder="Coordinador/Manager"></label>
+                <label>Proyect: <input type="text" name="proyect" placeholder="Proyect"></label>
+                <label>Milestones(FOT, VFF, PVS, Note 3, Note 1, VMG, Serie 0, SOP): <input type="text"
+                        name="milestones" placeholder="FOT, VFF, PVS, Note 3, Note 1, VMG, Serie 0, SOP"></label>
+                <label>Part designation/part number<input type="text" name="designation"
+                        placeholder="Part designation/part number"></label>
+                <label>Statement of problem:<input type="text" name="problem"
+                        placeholder="Statement of problem"></label>
+                <label>Goal of visit / Expected results: <input type="text" name="goal"
+                        placeholder="Goal of visit / Expected results"></label>
+                <label>Supplier: <input type="text" name="supplier" placeholder="Supplier"></label>
+                <label>Location of visit (tool shop): <input type="text" name="location"
+                        placeholder="Location of visit (tool shop)"></label>
+                <label>Contact data: (phone number, e-mail)<input type="text" name="contact"
+                        placeholder="phone number, e-mail"></label>
+                <br>
+                <hr>
+                <label>Nominated capacity: <input type="number" name="nominated_capacity"
+                        placeholder="Nominated Capacity"></label>
+                <label>What is the declared cycle time? <input type="text" name="nominated_capacity"
+                        placeholder="cycle time"></label>
+                <label>Contact persons VWM (QA, TEC, Logistics, Purchase): <input type="text" name="contact_vwm"
+                        placeholder="QA, TEC, Logistics, Purchase"></label>
+                <label>Desired visit completion date: <input type="date" name="visit_date" placeholder="Date"></label>
+
+                <br><br>
+                <button type="submit">Send</button>
+                <button onclick="exit()" type="button">Exit</button>
+            </form>
+        </div>
+
+
+        <div id="formularioOtros" class="hidden section">
+            <p class="title-formulario"><strong>M-BSM support (Request Blue Sheet)</strong><br><strong>Others</strong>
+            </p>
+            <form id="formularioEvaluacionOtros">
+                <label><strong>Others</strong></label>
+                <label>Folio: <input type="text" name="folio" id="folio3" readonly></label>
+                <label>Client: <input type="text" name="client" placeholder="Name"></label>
+                <label>Date:<input type="date" name="date3" id="date3" placeholder="Date" disabled></label>
+
+                <label>Coordinador/Manager: <input type="text" name="cordinador"
+                        placeholder="Coordinador/Manager"></label>
+                <label>Proyect: <input type="text" name="proyect" placeholder="Proyect"></label>
+                <label>Milestones(FOT, VFF, PVS, Note 3, Note 1, VMG, Serie 0, SOP): <input type="text"
+                        name="milestones" placeholder="FOT, VFF, PVS, Note 3, Note 1, VMG, Serie 0, SOP"></label>
+                <label>Part designation/part number<input type="text" name="designation"
+                        placeholder="Part designation"></label>
+                <label>Statement of problem:<input type="text" name="problem"
+                        placeholder="Statement of problem"></label>
+                <label>Goal of visit / Expected results: <input type="text" name="goal"
+                        placeholder="Goal of visit / Expected results"></label>
+                <label>Supplier: <input type="text" name="supplier" placeholder="Supplier"></label>
+                <label>Location of visit (tool shop): <input type="text" name="location" placeholder="Location"></label>
+                <label>Contact data: (phone number, e-mail)<input type="text" name="contact"
+                        placeholder="phone number, e-mail"></label>
+                <br>
+                <hr>
+                <label>Nominated capacity: <input type="number" name="nominated_capacity"
+                        placeholder="Nominated capacity"></label>
+                <label>Current capacity check (BKM): <input type="number" name="current_capacity"
+                        placeholder="Current capacity"></label>
+
+                <label>Contact persons VWM (QA, TEC, Logistics, Purchase): <input type="text" name="contact_vwm"
+                        placeholder="QA, TEC, Logistics, Purchase"></label>
+                <label>Desired visit completion date: <input type="date" name="visit_date" placeholder="max. 15 days"></label>
+
+                <br><br>
+                <button type="submit">Send</button>
+                <button onclick="exit()" type="button">Exit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>

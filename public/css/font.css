@@ -1,0 +1,178 @@
+* {
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+h1,
+h2 {
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
+    word-spacing: normal;
+    color: black;
+    padding: 1.5;
+    text-align: center;
+    line-height: 1.5rem;
+
+}
+
+
+
+h4 {
+    font-size: 30px;
+    line-height: 1.5rem;
+}
+
+.description {
+    font-size: 16px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
+    word-spacing: normal;
+    color: black;
+    padding: 1.5;
+    text-align: justify;
+    line-height: 1.5rem;
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #4682B4
+;
+}
+
+.section {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.title {
+    text-align: center;
+}
+
+.title-formulario {
+    text-align: center;
+    font-size:large;
+}
+
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px;
+    overflow-y: auto;
+}
+
+
+.evaluation-options {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que las tarjetas se acomoden en varias filas si es necesario */
+    gap: 20px;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.evaluation-card {
+    flex: 1 1 300px;
+    /* Se adapta al espacio disponible, mínimo 300px */
+    max-width: 100%;
+    background-color: #f0f4f8;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.evaluation-card:hover {
+    transform: scale(1.03);
+    background-color: #e0ebf5;
+}
+
+/* Opcional: mejora visual en pantallas muy pequeñas */
+@media (max-width: 600px) {
+    .evaluation-card {
+        flex: 1 1 100%;
+    }
+}
+
+
+
+.table-data {
+    font-size: 12px;
+}
+
+.hidden {
+    display: none;
+}
+
+.section_small {
+    margin-top: auto;
+}
+
+.section {
+    margin-top: 40px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input,
+button,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #0078D7;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    /* Alto y ancho del botón */
+    font-size: 16px;
+    /* Tamaño del texto */
+    border-radius: 5px;
+    /* Bordes redondeados opcionales */
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+
+
+button:hover {
+    background-color: #005fa3;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    input,
+    button,
+    select {
+        font-size: 16px;
+    }
+}
+
+.hidden {
+    display: none;
+}
