@@ -90,6 +90,7 @@ app.post("/enviar-formulario", async (req, res) => {
       };
 
       await transporter.sendMail(mailOptions);
+      console.log(`📧 Correo enviado con éxito con archivo: formulario_${cleanFolio}_${fechaHoy}.pdf`);
       fs.unlinkSync(filePath);
 
       res.status(200).json({ success: true, message: "Formulario enviado por correo con éxito." });
