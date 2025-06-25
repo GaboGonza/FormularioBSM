@@ -132,7 +132,20 @@ form.addEventListener("submit", function(event) {
   event.preventDefault();
 
   const formData = new FormData(this);
-  const plainObject = Object.fromEntries(formData.entries());
+  const plainObject = {};
+
+  formData.forEach((value, key) => {
+    if (plainObject[key]) {
+      // Si ya existe, conviértelo en array o agrega al array
+      if (Array.isArray(plainObject[key])) {
+        plainObject[key].push(value);
+      } else {
+        plainObject[key] = [plainObject[key], value];
+      }
+    } else {
+      plainObject[key] = value;
+    }
+  });
 
   fetch("/enviar-formulario", {
     method: "POST",
