@@ -17,7 +17,12 @@ app.post("/enviar-formulario", async (req, res) => {
     const data = req.body;
 
     const doc = new PDFDocument();
-    const filePath = path.join(__dirname, `formulario_${Date.now()}.pdf`);
+    const folio = data.folio || `sin_folio`;
+    const fechaHoy = new Date().toISOString().slice(0, 10); // formato YYYY-MM-DD
+
+    // Limpiar el folio para evitar caracteres raros en el nombre del archivo
+    const cleanFolio = folio.replace(/[^a-zA-Z0-9_-]/g, "_");
+    const filePath = path.join(__dirname, `formulario_${cleanFolio}_${fechaHoy}.pdf`);
     const writeStream = fs.createWriteStream(filePath);
     doc.pipe(writeStream);
 
@@ -79,7 +84,7 @@ app.post("/enviar-formulario", async (req, res) => {
         subject: "Formulario Blue Sheet recibido",
         text: "Adjunto encontrarás el formulario llenado.",
         attachments: [{
-          filename: "formulario.pdf",
+          filename: `formulario_${cleanFolio}_${fechaHoy}.pdf`,
           path: filePath
         }]
       };
