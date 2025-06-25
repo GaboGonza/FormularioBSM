@@ -11,6 +11,8 @@ const port = 3000;
 
 // Habilitar CORS correctamente, esto permite que tu frontend (aunque esté en otro dominio) pueda comunicarse con tu backend.
 app.use(express.static(path.join(__dirname, "public")));
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 
 // Middleware para parsear JSON

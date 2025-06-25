@@ -101,10 +101,10 @@
             <button onclick="exit()">Exit</button>
         </div>
 
-        <div id="formularioHerramentales" class="hidden section">
+        <div id="formularioHerramentales" class="hidden section" >
             <p class="title-formulario"><strong>M-BSM support (Request Blue Sheet)</strong> <br><strong>Tool-based
                     Evaluation</strong></p>
-            <form id="formularioEvaluacionHerramentales">
+            <form id="formularioEvaluacionHerramentales"  action="/enviar-formulario" method="POST">
                 <label><strong>Tool-based Evaluation</strong></label>
                 <label>Folio: <input type="text" name="folio" id="folio1" readonly></label>
                 <label>Client: <input type="text" name="client" required placeholder="Name"></label>
@@ -176,7 +176,7 @@
         <div id="formularioCapacidades" class="hidden section">
             <p class="title-formulario"><strong>M-BSM support (Request Blue Sheet)</strong><br><strong>Capacity
                     Evaluation</strong></p>
-            <form id="formularioEvaluacionCapacidades">
+            <form id="formularioEvaluacionCapacidades"  action="/enviar-formulario" method="POST">
                 <label><strong>Capacity Evaluation</strong></label>
                 <label>Folio: <input type="text" name="folio" id="folio2" readonly></label>
                 <label>Client: <input type="text" name="client" required placeholder="Name"></label>
@@ -217,7 +217,7 @@
         <div id="formularioOtros" class="hidden section">
             <p class="title-formulario"><strong>M-BSM support (Request Blue Sheet)</strong><br><strong>Others</strong>
             </p>
-            <form id="formularioEvaluacionOtros">
+            <form id="formularioEvaluacionOtros"  action="/enviar-formulario" method="POST">
                 <label><strong>Others</strong></label>
                 <label>Folio: <input type="text" name="folio" id="folio3" readonly></label>
                 <label>Client: <input type="text" name="client" placeholder="Name"></label>
