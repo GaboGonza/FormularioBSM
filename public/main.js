@@ -127,24 +127,30 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-document.getElementById("formularioEvaluacionHerramentales").addEventListener("submit", function(event) {
+const form = document.getElementById("formularioEvaluacionHerramentales");
+form.addEventListener("submit", function(event) {
   event.preventDefault();
 
   const formData = new FormData(this);
+  const plainObject = Object.fromEntries(formData.entries());
 
   fetch("/enviar-formulario", {
     method: "POST",
-    body: formData
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(plainObject)
   })
-  .then(res => res.json())
+  .then(response => response.json())
   .then(data => {
     alert(data.message);
   })
   .catch(err => {
-    console.error("Error:", err);
+    console.error("Error al enviar:", err);
     alert("Hubo un error al enviar el formulario");
   });
 });
+
 
 
 
