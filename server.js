@@ -24,6 +24,11 @@ app.post("/enviar-formulario", async (req, res) => {
     doc.font('Helvetica-Bold').fontSize(18).text("Blue Sheet Support Request", { underline: true });
     doc.moveDown(1);
 
+    // TIPO DE FORMULARIO AL PRINCIPIO
+    const tipoFormulario = data.form_type || "Desconocido";
+    doc.font('Helvetica-Bold').fontSize(16).fillColor('blue').text(`Formulario: ${tipoFormulario}`);
+    doc.moveDown(1);
+
     const camposOrdenados = [
       "folio", "client", "date", "cordinador", "proyect",
       "milestones", "designation", "problem", "goal",
