@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
 
-        fetch("http://localhost:3000/enviar-formulario", {
+        fetch("https://formulario-bsm.onrender.com/enviar-formulario",{
           method: "POST",
           headers: {
             "Content-Type": "application/json"
