@@ -108,12 +108,13 @@
                 <input type="hidden" name="form_type" value="Tool-based Evaluation">
                 <label><strong>Tool-based Evaluation</strong></label>
                 <label>Folio: <input type="text" name="folio" id="folio1" readonly></label>
-                <label>Client: <input type="text" name="client" required placeholder="Name"></label>
+                <label>Requester/Client: <input type="text" name="client" required placeholder="Name"></label>
+                <label>Email: <input type="email" name="user_email" placeholder="your@email.com" required></label>  
                 <label>Date:<input type="date" name="date" id="date1" disabled></label>
 
                 <label>Coordinador/Manager: <input type="text" name="cordinador"
                         placeholder="Coordinador/Manager"></label>
-                <label>Proyect: <input type="text" name="proyect" placeholder="Proyect" required></label>
+                <label>Project: <input type="text" name="proyect" placeholder="Proyect" required></label>
                 <label>Milestones(FOT, VFF, PVS, Note 3, Note 1, BMG, Serie 0, SOP): <input type="text"
                         name="milestones" placeholder="FOT: CW xx/xx, VVF: CW xx/xx, PVS: CW xx/xx, EMN3: CW xx/xx, EMN1: CW xx/xx, BMG: CW xx/xx, Serie 0: CW xx/xx, SOP: CW xx/xx"
                         required></label>
@@ -143,7 +144,7 @@
                             <th>1. Part Number</th>
                             <th>2. Quantity Delivered</th>
                             <th>3. Models Assembled In</th>
-                            <th>4. Refurbish (Yes or No)</th>
+                            <th>4. if it has already been refurbished (Yes or No)</th>
                             <th>5. Estimated Quantity Until EOP</th>
                         </tr>
                     </thead>
@@ -179,11 +180,12 @@
                 <input type="hidden" name="form_type" value="Capacity Evaluation">
                 <label><strong>Capacity Evaluation</strong></label>
                 <label>Folio: <input type="text" name="folio" id="folio2" readonly></label>
-                <label>Client: <input type="text" name="client" required placeholder="Name"></label>
+                <label>Requester/Client: <input type="text" name="client" required placeholder="Name"></label>
+                <label>Email: <input type="email" name="user_email" placeholder="your@email.com" required></label>
                 <label>Date:<input type="date" name="date2" id="date2" placeholder="Date" disabled></label>
                 <label>Coordinador/Manager: <input type="text" name="cordinador"
                         placeholder="Coordinador/Manager" required></label>
-                <label>Proyect: <input type="text" name="proyect" placeholder="Proyect" required></label>
+                <label>Project: <input type="text" name="proyect" placeholder="Proyect" required></label>
                 <label>Milestones(FOT, VFF, PVS, Note 3, Note 1, BMG, Serie 0, SOP): <input type="text"
                         name="milestones" placeholder="FOT: CW xx/xx, VVF: CW xx/xx, PVS: CW xx/xx, EMN3: CW xx/xx, EMN1: CW xx/xx, BMG: CW xx/xx, Serie 0: CW xx/xx, SOP: CW xx/xx" required></label>
                 <label>Part designation/part number<input type="text" name="designation"
@@ -222,12 +224,13 @@
                 <input type="hidden" name="form_type" value="Others">
                 <label><strong>Others</strong></label>
                 <label>Folio: <input type="text" name="folio" id="folio3" readonly></label>
-                <label>Client: <input type="text" name="client" placeholder="Name" required></label>
+                <label>Requester/Client: <input type="text" name="client" placeholder="Name" required></label>
+                <label>Email: <input type="email" name="user_email" placeholder="your@email.com" required></label>
                 <label>Date:<input type="date" name="date3" id="date3" placeholder="Date" disabled></label>
 
                 <label>Coordinador/Manager: <input type="text" name="cordinador"
                         placeholder="Coordinador/Manager" required></label>
-                <label>Proyect: <input type="text" name="proyect" placeholder="Proyect" required></label>
+                <label>Project: <input type="text" name="proyect" placeholder="Proyect" required></label>
                 <label>Milestones(FOT, VFF, PVS, Note 3, Note 1, BMG, Serie 0, SOP): <input type="text"
                         name="milestones" placeholder="FOT: CW xx/xx, VVF: CW xx/xx, PVS: CW xx/xx, EMN3: CW xx/xx, EMN1: CW xx/xx, BMG: CW xx/xx, Serie 0: CW xx/xx, SOP: CW xx/xx" required></label>
                 <label>Part designation/part number<input type="text" name="designation"

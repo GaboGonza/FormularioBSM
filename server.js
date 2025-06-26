@@ -80,7 +80,7 @@ app.post("/enviar-formulario", async (req, res) => {
 
       const mailOptions = {
         from: process.env.EMAIL_USER,
-        to: "gabriel.morales@proveed-vw.com.mx",
+        to: ["gabriel.morales@proveed-vw.com.mx",data.user_email],
         subject: "Formulario Blue Sheet recibido",
         text: "Adjunto encontrarás el formulario llenado.",
         attachments: [{
