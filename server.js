@@ -35,8 +35,7 @@ app.post("/enviar-formulario", async (req, res) => {
     doc.moveDown(1);
 
     const camposOrdenados = [
-      "folio", "client", "date", "cordinador", "proyect",
-      "milestones", "designation", "problem", "goal",
+      "folio", "client", "user_email","date", "cordinador", "proyect", "designation", "problem", "goal",
       "supplier", "location", "contact", "EBR(%)","nominated_capacity",
       "current_capacity", "contact_vwm", "visit_date"
     ];
