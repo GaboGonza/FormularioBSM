@@ -18,9 +18,8 @@ app.post("/enviar-formulario", async (req, res) => {
 
     const doc = new PDFDocument();
     const folio = data.folio || `sin_folio`;
-    const fechaHoy = new Date().toISOString().slice(0, 10); // formato YYYY-MM-DD
+    const fechaHoy = new Date().toISOString().slice(0, 10); 
 
-    // Limpiar el folio para evitar caracteres raros en el nombre del archivo
     const cleanFolio = folio.replace(/[^a-zA-Z0-9_-]/g, "_");
     const filePath = path.join(__dirname, `formulario_${cleanFolio}_${fechaHoy}.pdf`);
     const writeStream = fs.createWriteStream(filePath);
@@ -29,14 +28,13 @@ app.post("/enviar-formulario", async (req, res) => {
     doc.font('Helvetica-Bold').fontSize(18).text("Blue Sheet Support Request", { underline: true, align: 'center' });
     doc.moveDown(1);
 
-    // TIPO DE FORMULARIO AL PRINCIPIO
     const tipoFormulario = data.form_type || "Desconocido";
     doc.font('Helvetica-Bold').fontSize(16).text(`Category: ${tipoFormulario}`);
     doc.moveDown(1);
 
     const camposOrdenados = [
-      "folio", "client", "user_email","date", "cordinador", "proyect", "designation", "problem", "goal",
-      "supplier", "location", "contact", "EBR(%)","nominated_capacity",
+      "folio", "client", "user_email", "date", "cordinador", "proyect", "designation", "problem", "goal",
+      "supplier", "location", "contact", "EBR(%)", "nominated_capacity",
       "current_capacity", "contact_vwm", "visit_date"
     ];
 
@@ -49,19 +47,27 @@ app.post("/enviar-formulario", async (req, res) => {
       }
     });
 
-    // Si hay tabla
-    if (Array.isArray(data["part_number[]"]) && data["part_number[]"].length > 0) {
+    // Helper para convertir a array si es string
+    const toArray = (val) => Array.isArray(val) ? val : (val ? [val] : []);
+
+    const partNumbers = toArray(data["part_number[]"]);
+    const quantityDelivered = toArray(data["quantity_delivered[]"]);
+    const modelsAssembled = toArray(data["models_assembled[]"]);
+    const refurbishDates = toArray(data["refurbish_date[]"]);
+    const estimatedQuantities = toArray(data["estimated_quantity[]"]);
+
+    if (partNumbers.length > 0) {
       doc.addPage();
       doc.font('Helvetica-Bold').fontSize(12).text("Part Details Table");
       doc.moveDown(1);
 
-      data["part_number[]"].forEach((_, i) => {
+      partNumbers.forEach((_, i) => {
         doc.font('Helvetica-Bold').text(`No. #${i + 1}`);
-        doc.font('Helvetica').text(`Part Number: ${data["part_number[]"][i] || ''}`);
-        doc.text(`Quantity Delivered: ${data["quantity_delivered[]"][i] || ''}`);
-        doc.text(`Models Assembled In: ${data["models_assembled[]"][i] || ''}`);
-        doc.text(`Refurbish: ${data["refurbish_date[]"][i] || ''}`);
-        doc.text(`Estimated Quantity Until EOP: ${data["estimated_quantity[]"][i] || ''}`);
+        doc.font('Helvetica').text(`Part Number: ${partNumbers[i] || ''}`);
+        doc.text(`Quantity Delivered: ${quantityDelivered[i] || ''}`);
+        doc.text(`Models Assembled In: ${modelsAssembled[i] || ''}`);
+        doc.text(`Refurbish: ${refurbishDates[i] || ''}`);
+        doc.text(`Estimated Quantity Until EOP: ${estimatedQuantities[i] || ''}`);
         doc.moveDown(1);
       });
     }
@@ -79,7 +85,7 @@ app.post("/enviar-formulario", async (req, res) => {
 
       const mailOptions = {
         from: process.env.EMAIL_USER,
-        to: ["gabriel.morales@proveed-vw.com.mx",data.user_email],
+        to: ["gabriel.morales@proveed-vw.com.mx", data.user_email],
         subject: "Formulario Blue Sheet recibido",
         text: "Adjunto encontrarás el formulario llenado.",
         attachments: [{
