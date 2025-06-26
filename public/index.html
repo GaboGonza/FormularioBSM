@@ -106,32 +106,29 @@
                     Evaluation</strong></p>
             <form id="formularioEvaluacionHerramentales">
                 <input type="hidden" name="form_type" value="Tool-based Evaluation">
-                <label><strong>Tool-based Evaluation</strong></label>
+                <label><strong>Tool Evaluation</strong></label>
                 <label>Folio: <input type="text" name="folio" id="folio1" readonly></label>
-                <label>Requester/Client: <input type="text" name="client" required placeholder="Name"></label>
+                <label name="Requester_data">Requester Data:</label>
+                <label>Name: <input type="text" name="Name" placeholder="name" required></label>
                 <label>Email: <input type="email" name="user_email" placeholder="your@email.com" required></label>  
+                <label>Phone number: <input type="tel" name="Phone_number" id="phone" required></label>
                 <label>Date:<input type="date" name="date" id="date1" disabled></label>
 
-                <label>Coordinador/Manager: <input type="text" name="cordinador"
-                        placeholder="Coordinador/Manager"></label>
-                <label>Project: <input type="text" name="proyect" placeholder="Project" required></label>
-                <label>Part designation/part number<input type="text" name="designation"
-                        placeholder="XXXXXXXXX" required></label>
-                <label>Statement of problem:<input type="text" name="problem" placeholder="Statement of problem"
+                <label>Coordinator/Manager[reports to]: <input type="text" name="coordinator"
+                        placeholder="Coordinator/Manager"></label>
+                <label>Statement of problem:<input type="text" name="Statement_of_problem" placeholder="Statement of problem"
                         required></label>
-                <label>Goal of visit / Expected results: <input type="text" name="goal"
+                <label>Goal of visit / Expected results: <input type="text" name="Goal_of_visit"
                         placeholder="Goal of visit / Expected results" required></label>
                 <label>Supplier: <input type="text" name="supplier" placeholder="Supplier" required></label>
                 <label>Location of visit (tool shop): <input type="text" name="location" placeholder="Location"
                         required></label>
-                <label>Contact data: (name, phone number, e-mail)<input type="text" name="contact"
-                        placeholder="xxxx, Tel.XXX-XXXX-XXX,e-mail@mail.com" required></label>
+                <label name="Contact_data">Supplier contact data: </label>
+                <label>Name: <input type="text" name="Name_Supplier" placeholder="Supplier_name" required></label>
+                <label>Email: <input type="email" name="email_supplier" required></label>
+                <label>Phone number: <input type="tel" name="phone_number_supplier" required></label>
                 <br>
                 <hr>
-                <label>Nominated capacity: <input type="number" name="nominated_capacity" placeholder="Nominated capacity"
-                        required></label>
-                <label>Current capacity check (BKM): <input type="number" name="current_capacity"
-                        placeholder="Current capacity check" required></label>
                 <label><strong>----------------------------------------------------------------------------------Table-------------------------------------------------------------------------------------</strong></label>
 
                 <!-- Table inserted here -->
@@ -140,17 +137,21 @@
                         <tr class="table-data">
                             <th>1. Part Number</th>
                             <th>2. Quantity Delivered</th>
-                            <th>3. Models Assembled In</th>
-                            <th>4. if it has already been refurbished (Yes or No)</th>
-                            <th>5. Estimated Quantity Until EOP</th>
+                            <th>3. Project</th>
+                            <th>4. Nominated capacity</th>
+                            <th>5. Current capacity check (BKM)</th>
+                            <th>6. Tool has been refurbished? (Yes/No)</th>
+                            <th>7. Estimated Quantity Until EOP</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><input type="text" name="part_number[]" required></td>
                             <td><input type="number" name="quantity_delivered[]" required></td>
-                            <td><input type="text" name="models_assembled[]" required></td>
-                            <td><input type="text" name="refurbish_date[]" required placeholder="YES/NO"></td>
+                            <td><input type="text" name="project[]" required></td>
+                            <td><input type="number" name="nominated_capacity[]" required ></td>
+                            <td><input type="number" name="current_capacity[]" required ></td>
+                            <td><input type="text" name="tool[]" required placeholder="YES/NO"></td>
                             <td><input type="number" name="estimated_quantity[]" required></td>
                         </tr>
                         <!-- Puedes duplicar esta fila para más entradas -->
@@ -177,30 +178,52 @@
                 <input type="hidden" name="form_type" value="Capacity Evaluation">
                 <label><strong>Capacity Evaluation</strong></label>
                 <label>Folio: <input type="text" name="folio" id="folio2" readonly></label>
-                <label>Requester/Client: <input type="text" name="client" required placeholder="Name"></label>
-                <label>Email: <input type="email" name="user_email" placeholder="your@email.com" required></label>
-                <label>Date:<input type="date" name="date2" id="date2" placeholder="Date" disabled></label>
-                <label>Coordinador/Manager: <input type="text" name="cordinador"
+                <label name="Requester_data">Requester Data:</label>
+                <label>Name: <input type="text" name="Name" placeholder="name" required></label>
+                <label>Email: <input type="email" name="user_email" placeholder="your@email.com" required></label>  
+                <label>Phone number: <input type="tel" name="Phone_number" id="phone" required></label>
+                <label>Date:<input type="date" name="date" id="date2" placeholder="Date" disabled></label>
+                <label>Coordinator/Manager[reports to]:  <input type="text" name="coordinator"
                         placeholder="Coordinador/Manager" required></label>
-                <label>Project: <input type="text" name="proyect" placeholder="Project" required></label>
-                <label>Part designation/part number<input type="text" name="designation"
-                        placeholder="Part designation/part number" required></label>
-                <label>Statement of problem:<input type="text" name="problem"
+                <label>Statement of problem:<input type="text" name="Statement_of_problem"
                         placeholder="Statement of problem" required></label>
-                <label>Goal of visit / Expected results: <input type="text" name="goal"
+                <label>Goal of visit / Expected results: <input type="text" name="Goal_of_visit"
                         placeholder="Goal of visit / Expected results" required></label>
                 <label>Supplier: <input type="text" name="supplier" placeholder="Supplier" required></label>
                 <label>Location of visit (tool shop): <input type="text" name="location"
                         placeholder="Location of visit (tool shop)" required></label>
-                <label>Contact data: (name, phone number, e-mail)<input type="text" name="contact"
-                        placeholder="xxxx, Tel.XXX-XXXX-XXX,e-mail@mail.com" required></label>
+                <label name="Contact_data">Supplier contact data: </label>
+                <label>Name: <input type="text" name="Name_Supplier" placeholder="Supplier_name" required></label>
+                <label>Email: <input type="email" name="email_supplier" placeholder="email@mail.com"></label>
+                <label>Phone number: <input type="tel" name="phone_number_supplier" placeholder="xxx-xxxx-xxx" required></label>
                 <br>
                 <hr>
-                <label>EBR(%): <input type="number" name="EBR(%)" id="EBR" placeholder="%" required></label>
-                <label>Nominated capacity: <input type="number" name="nominated_capacity"
-                        placeholder="Nominated Capacity" required></label>
-                <label>What is the declared cycle time? <input type="text" name="cycle_time"
-                        placeholder="cycle time" required></label>
+                                <!-- Table inserted here -->
+                <table border="1" id="partsTable">
+                    <thead>
+                        <tr class="table-data">
+                            <th>1. Part Number</th>
+                            <th>3. Project</th>
+                            <th>4. Nominated capacity</th>
+                            <th>5. Current capacity check (BKM)</th>
+                            <th>6. EBR(%)</th>
+                            <th>7. What is the declared cycle time?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="part_number[]" required></td>
+                            <td><input type="text" name="project[]" required></td>
+                            <td><input type="number" name="nominated_capacity[]" required ></td>
+                            <td><input type="number" name="current_capacity[]" required ></td>
+                            <td><input type="number" name="ebr[]" required placeholder="YES/NO"></td>
+                            <td><input type="text" name="cycle_time[]" required></td>
+                        </tr>
+                        <!-- Puedes duplicar esta fila para más entradas -->
+                    </tbody>
+                </table>
+
+                <button type="button" onclick="addRow()">Add Another Row</button>
                 <label>Contact persons VWM (QA, TEC, Logistics): <input type="text" name="contact_vwm"
                         placeholder="Q VW:__________ ; DT VW:__________ ; LOG VW:__________" required></label>
                 <label>Desired visit completion date: <input type="date" name="visit_date" placeholder="Date" required></label>
@@ -219,29 +242,48 @@
                 <input type="hidden" name="form_type" value="Others">
                 <label><strong>Others</strong></label>
                 <label>Folio: <input type="text" name="folio" id="folio3" readonly></label>
-                <label>Requester/Client: <input type="text" name="client" placeholder="Name" required></label>
+                <label name="Contact_data">Supplier contact data: </label>
+                <label>Name: <input type="text" name="Name" placeholder="Supplier_name" required></label>
                 <label>Email: <input type="email" name="user_email" placeholder="your@email.com" required></label>
-                <label>Date:<input type="date" name="date3" id="date3" placeholder="Date" disabled></label>
+                <label>Phone number: <input type="tel" name="phone_number" required></label>
+                <label>Date:<input type="date" name="date" id="date3" placeholder="Date" disabled></label>
 
-                <label>Coordinador/Manager: <input type="text" name="cordinador"
+                <label>Coordinador/Manager: <input type="text" name="coordinator"
                         placeholder="Coordinador/Manager" required></label>
-                <label>Project: <input type="text" name="proyect" placeholder="Project" required></label>
-                <label>Part designation/part number<input type="text" name="designation"
-                        placeholder="Part designation" required></label>
-                <label>Statement of problem:<input type="text" name="problem"
+                <label>Statement of problem:<input type="text" name="Statement_of_problem"
                         placeholder="Statement of problem" required></label>
-                <label>Goal of visit / Expected results: <input type="text" name="goal"
+                <label>Goal of visit / Expected results: <input type="text" name="Goal_of_visit"
                         placeholder="Goal of visit / Expected results" required></label>
                 <label>Supplier: <input type="text" name="supplier" placeholder="Supplier" required></label>
                 <label>Location of visit (tool shop): <input type="text" name="location" placeholder="Location" required></label>
-                <label>Contact data: (name, phone number, e-mail)<input type="text" name="contact"
-                        placeholder="xxxx, Tel.XXX-XXXX-XXX,e-mail@mail.com" required></label>
+                <label name="Contact_data">Supplier contact data: </label>
+                <label>Name: <input type="text" name="Name_Supplier" placeholder="name" required></label>
+                <label>Email: <input type="email" name="email_supplier" placeholder="email@mail.com"></label>
+                <label>Phone number: <input type="tel" name="phone_number_supplier" placeholder="xxx-xxxx-xxx" required></label>
                 <br>
                 <hr>
-                <label>Nominated capacity: <input type="number" name="nominated_capacity"
-                        placeholder="Nominated capacity" required></label>
-                <label>Current capacity check (BKM): <input type="number" name="current_capacity"
-                        placeholder="Current capacity" required></label>
+                                     <!-- Table inserted here -->
+                <table border="1" id="partsTable">
+                    <thead>
+                        <tr class="table-data">
+                            <th>1. Part Number</th>
+                            <th>3. Project</th>
+                            <th>4. Nominated capacity</th>
+                            <th>5. Current capacity check (BKM)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="part_number[]" required></td>
+                            <td><input type="text" name="project[]" required></td>
+                            <td><input type="number" name="nominated_capacity[]" required ></td>
+                            <td><input type="number" name="current_capacity[]" required ></td>
+                        </tr>
+                        <!-- Puedes duplicar esta fila para más entradas -->
+                    </tbody>
+                </table>
+
+                <button type="button" onclick="addRow()">Add Another Row</button>
 
                 <label>Contact persons VWM (QA, TEC, Logistics): <input type="text" name="contact_vwm"
                         placeholder="Q VW:__________ ; DT VW:__________ ; LOG VW:__________" required></label>
