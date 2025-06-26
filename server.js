@@ -33,8 +33,7 @@ app.post("/enviar-formulario", async (req, res) => {
     doc.moveDown(1);
 
     const camposOrdenados = [
-      "folio","Requester_data","Name","user_email","Phone_number","date", "coordinator", "Statement_of_problem", "Goal_of_visit",
-      "supplier", "location", "Contact_data","Name_Supplier","email_supplier","phone_number_supplier", "contact_vwm", "visit_date"
+      "folio","Requester_data","Name","user_email","Phone_number","date", "coordinator", "Statement_of_problem", "Goal_of_visit", "location", "Contact_data","Name_Supplier","email_supplier","phone_number_supplier", "contact_vwm", "visit_date"
     ];
 
     camposOrdenados.forEach(key => {
@@ -55,11 +54,11 @@ if (Array.isArray(data["part_number[]"]) || data["part_number[]"]) {
   const formType = data.form_type || "Unknown";
 
   doc.addPage();
-  doc.font('Helvetica-Bold').fontSize(14).text(`📦 Part Details Table - ${formType}`);
+  doc.font('Helvetica-Bold').fontSize(14).text(`Part Details Table - ${formType}`);
   doc.moveDown(1);
 
   partNumbers.forEach((_, i) => {
-    doc.font('Helvetica-Bold').text(`🔹 Row #${i + 1}`);
+    doc.font('Helvetica-Bold').text(`Row #${i + 1}`);
     doc.font('Helvetica');
 
     doc.text(`Part Number: ${partNumbers[i] || ''}`);
@@ -136,7 +135,7 @@ if (Array.isArray(data["part_number[]"]) || data["part_number[]"]) {
       console.log(`📧 Email successfully sent with attachment: form_${cleanFolio}_${fechaHoy}.pdf`);
       fs.unlinkSync(filePath);
 
-      res.status(200).json({ success: true, message: "Email successfully sent with attachment:" });
+      res.status(200).json({ success: true, message: "Email successfully sent with attachment" });
     });
 
     writeStream.on("error", (err) => {

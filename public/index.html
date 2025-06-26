@@ -102,16 +102,18 @@
         </div>
 
         <div id="formularioHerramentales" class="hidden section" >
-            <p class="title-formulario"><strong>M-BSM support (Request Blue Sheet)</strong> <br><strong>Tool-based
+            <p class="title-formulario"><strong>M-BSM support (Request Blue Sheet)</strong> <br><strong>Tool
                     Evaluation</strong></p>
             <form id="formularioEvaluacionHerramentales">
                 <input type="hidden" name="form_type" value="Tool-based Evaluation">
                 <label><strong>Tool Evaluation</strong></label>
                 <label>Folio: <input type="text" name="folio" id="folio1" readonly></label>
-                <label name="Requester_data">Requester Data:</label>
+                <hr>
+                <label name="Requester_data"><strong>Requester Data:</strong></label>
                 <label>Name: <input type="text" name="Name" placeholder="name" required></label>
                 <label>Email: <input type="email" name="user_email" placeholder="your@email.com" required></label>  
-                <label>Phone number: <input type="tel" name="Phone_number" id="phone" required></label>
+                <label>Phone number: <input type="tel" name="Phone_number" id="phone" placeholder="xxx-xxxx-xxx"></label>
+                <hr>
                 <label>Date:<input type="date" name="date" id="date1" disabled></label>
 
                 <label>Coordinator/Manager[reports to]: <input type="text" name="coordinator"
@@ -120,13 +122,13 @@
                         required></label>
                 <label>Goal of visit / Expected results: <input type="text" name="Goal_of_visit"
                         placeholder="Goal of visit / Expected results" required></label>
-                <label>Supplier: <input type="text" name="supplier" placeholder="Supplier" required></label>
                 <label>Location of visit (tool shop): <input type="text" name="location" placeholder="Location"
                         required></label>
+                <hr>
                 <label name="Contact_data">Supplier contact data: </label>
                 <label>Name: <input type="text" name="Name_Supplier" placeholder="Supplier_name" required></label>
-                <label>Email: <input type="email" name="email_supplier" required></label>
-                <label>Phone number: <input type="tel" name="phone_number_supplier" required></label>
+                <label>Email: <input type="email" name="email_supplier" placeholder="your@email.com"></label>
+                <label>Phone number: <input type="tel" name="phone_number_supplier" placeholder="xxx-xxxx-xxx" required></label>
                 <br>
                 <hr>
                 <label><strong>----------------------------------------------------------------------------------Table-------------------------------------------------------------------------------------</strong></label>
@@ -178,21 +180,22 @@
                 <input type="hidden" name="form_type" value="Capacity Evaluation">
                 <label><strong>Capacity Evaluation</strong></label>
                 <label>Folio: <input type="text" name="folio" id="folio2" readonly></label>
-                <label name="Requester_data">Requester Data:</label>
+                <label name="Requester_data"><strong>Requester Data:</strong></label>
                 <label>Name: <input type="text" name="Name" placeholder="name" required></label>
                 <label>Email: <input type="email" name="user_email" placeholder="your@email.com" required></label>  
-                <label>Phone number: <input type="tel" name="Phone_number" id="phone" required></label>
+                <label>Phone number: <input type="tel" name="Phone_number" id="phone" placeholder="xxx-xxxx-xxx"></label>
+                <hr>
                 <label>Date:<input type="date" name="date" id="date2" placeholder="Date" disabled></label>
                 <label>Coordinator/Manager[reports to]:  <input type="text" name="coordinator"
-                        placeholder="Coordinador/Manager" required></label>
+                        placeholder="Coordinator/Manager" required></label>
                 <label>Statement of problem:<input type="text" name="Statement_of_problem"
                         placeholder="Statement of problem" required></label>
                 <label>Goal of visit / Expected results: <input type="text" name="Goal_of_visit"
                         placeholder="Goal of visit / Expected results" required></label>
-                <label>Supplier: <input type="text" name="supplier" placeholder="Supplier" required></label>
                 <label>Location of visit (tool shop): <input type="text" name="location"
                         placeholder="Location of visit (tool shop)" required></label>
-                <label name="Contact_data">Supplier contact data: </label>
+                <hr>
+                <label name="Contact_data"><strong>Supplier contact data:</strong></label>
                 <label>Name: <input type="text" name="Name_Supplier" placeholder="Supplier_name" required></label>
                 <label>Email: <input type="email" name="email_supplier" placeholder="email@mail.com"></label>
                 <label>Phone number: <input type="tel" name="phone_number_supplier" placeholder="xxx-xxxx-xxx" required></label>
@@ -242,21 +245,23 @@
                 <input type="hidden" name="form_type" value="Others">
                 <label><strong>Others</strong></label>
                 <label>Folio: <input type="text" name="folio" id="folio3" readonly></label>
-                <label name="Contact_data">Supplier contact data: </label>
+                <hr>
+                <label name="Contact_data"><strong>Supplier contact data:</strong></label>
                 <label>Name: <input type="text" name="Name" placeholder="Supplier_name" required></label>
                 <label>Email: <input type="email" name="user_email" placeholder="your@email.com" required></label>
-                <label>Phone number: <input type="tel" name="phone_number" required></label>
+                <label>Phone number: <input type="tel" name="phone_number" placeholder="xxx-xxxx-xxx" required></label>
+                <hr>
                 <label>Date:<input type="date" name="date" id="date3" placeholder="Date" disabled></label>
 
-                <label>Coordinador/Manager: <input type="text" name="coordinator"
-                        placeholder="Coordinador/Manager" required></label>
+                <label>Coordinator/Manager: <input type="text" name="coordinator"
+                        placeholder="Coordinator/Manager" required></label>
                 <label>Statement of problem:<input type="text" name="Statement_of_problem"
                         placeholder="Statement of problem" required></label>
                 <label>Goal of visit / Expected results: <input type="text" name="Goal_of_visit"
                         placeholder="Goal of visit / Expected results" required></label>
-                <label>Supplier: <input type="text" name="supplier" placeholder="Supplier" required></label>
                 <label>Location of visit (tool shop): <input type="text" name="location" placeholder="Location" required></label>
-                <label name="Contact_data">Supplier contact data: </label>
+                <hr>
+                <label name="Contact_data"><strong>Supplier contact data:</strong></label>
                 <label>Name: <input type="text" name="Name_Supplier" placeholder="name" required></label>
                 <label>Email: <input type="email" name="email_supplier" placeholder="email@mail.com"></label>
                 <label>Phone number: <input type="tel" name="phone_number_supplier" placeholder="xxx-xxxx-xxx" required></label>
