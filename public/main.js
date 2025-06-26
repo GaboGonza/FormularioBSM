@@ -109,8 +109,8 @@ function addRow() {
 
 document.addEventListener("DOMContentLoaded", () => {
   const today = new Date();
-  const maxDate = new Date();
-  maxDate.setDate(today.getDate() + 15);
+  const minDate = new Date();
+  minDate.setDate(today.getDate() + 16); // Hoy + 16 días (para permitir a partir del día 16)
 
   const formatDate = (date) => {
     const year = date.getFullYear();
@@ -121,10 +121,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const inputs = document.querySelectorAll("input[name='visit_date']");
   inputs.forEach(input => {
-    input.min = formatDate(today);
-    input.max = formatDate(maxDate);
+    input.min = formatDate(minDate);
+    // Si quieres, puedes establecer un límite máximo opcional
+    // input.max = "9999-12-31"; // o cualquier fecha máxima que desees
   });
 });
+
 
 
 
