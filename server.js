@@ -26,7 +26,7 @@ app.post("/enviar-formulario", async (req, res) => {
     const writeStream = fs.createWriteStream(filePath);
     doc.pipe(writeStream);
 
-    doc.fillColor('white').fill('#0033cc').font('Helvetica-Bold').fontSize(18).text("Blue Sheet Support Request", { underline: true, align: 'center' });
+    doc.font('Helvetica-Bold').fontSize(18).text("Blue Sheet Support Request", { underline: true, align: 'center' });
     doc.moveDown(1);
 
     // TIPO DE FORMULARIO AL PRINCIPIO
@@ -52,7 +52,7 @@ app.post("/enviar-formulario", async (req, res) => {
     // Si hay tabla
     if (Array.isArray(data["part_number[]"]) && data["part_number[]"].length > 0) {
       doc.addPage();
-      doc.font('Helvetica-Bold').fontSize(16).text("Part Details Table");
+      doc.font('Helvetica-Bold').fontSize(12).text("Part Details Table");
       doc.moveDown(1);
 
       data["part_number[]"].forEach((_, i) => {
