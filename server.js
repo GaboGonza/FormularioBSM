@@ -26,7 +26,7 @@ app.post("/enviar-formulario", async (req, res) => {
     const writeStream = fs.createWriteStream(filePath);
     doc.pipe(writeStream);
 
-    doc.font('Helvetica-Bold').fontSize(18).text("Blue Sheet Support Request", { underline: true });
+    doc.fillColor('white').fill('#0033cc').font('Helvetica-Bold').fontSize(18).text("Blue Sheet Support Request", { underline: true, align: 'center' });
     doc.moveDown(1);
 
     // TIPO DE FORMULARIO AL PRINCIPIO
