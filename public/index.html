@@ -38,11 +38,11 @@
 
         <div id="selectorEvaluacion" class="section_small hidden">
             <h2>Evaluations</h2>
-            <br>
+            <br>  
             <br>
             <div class="evaluation-options">
                 <div class="evaluation-card" onclick="showSection('herramentales')">
-                    <h3>Tool-based Evaluation</h3>
+                    <h3>Tool Evaluation</h3>
                     <p>We request support for the evaluation of specific tooling
                         with the objective of verifying the need for refurbishing, as well as conducting a general
                         assessment of the tool's usage and maintenance history since the Start of Production (SOP).</p>
@@ -114,14 +114,14 @@
                 <label name="Requester_data"><strong>Requester Data:</strong></label>
                 <label>Name: <input type="text" name="Name" placeholder="name" required></label>
                 <label>Email: <input type="email" name="user_email" placeholder="your@email.com" required></label>  
-                <label>Phone number: <input type="tel" name="Phone_number" id="phone" placeholder="xxx-xxxx-xxx"></label>
+                <label>Phone number: <input type="tel" name="phone_number" id="phone" placeholder="xxx-xxxx-xxx" required></label>
                 <br>
                 <hr>
                 <br>
-                <label>Date:<input type="date" name="date" id="date1" disabled></label>
+                <label>Date:<input type="date" name="date1" id="date1" disabled></label>
 
                 <label>Coordinator/Manager[reports to]: <input type="text" name="coordinator"
-                        placeholder="Coordinator/Manager"></label>
+                        placeholder="Coordinator/Manager" required></label>
                 <label>Statement of problem:<input type="text" name="Statement_of_problem" placeholder="Statement of problem"
                         required></label>
                 <label>Goal of visit / Expected results: <input type="text" name="Goal_of_visit"
@@ -133,7 +133,7 @@
                 <br>
                 <label name="Contact_data"><strong>Supplier contact data:</strong></label>
                 <label>Name: <input type="text" name="Name_Supplier" placeholder="Supplier_name" required></label>
-                <label>Email: <input type="email" name="email_supplier" placeholder="your@email.com"></label>
+                <label>Email: <input type="email" name="email_supplier" placeholder="your@email.com" required></label>
                 <label>Phone number: <input type="tel" name="phone_number_supplier" placeholder="xxx-xxxx-xxx" required></label>
                 <br>
                 <hr>
@@ -196,7 +196,7 @@
                 <br>
                 <hr>
                 <br>
-                <label>Date:<input type="date" name="date" id="date2" placeholder="Date" disabled></label>
+                <label>Date:<input type="date" name="date2" id="date2" placeholder="Date" disabled></label>
                 <label>Coordinator/Manager[reports to]:  <input type="text" name="coordinator"
                         placeholder="Coordinator/Manager" required></label>
                 <label>Statement of problem:<input type="text" name="Statement_of_problem"
@@ -269,7 +269,7 @@
                 <br>
                 <hr>
                 <br>
-                <label>Date:<input type="date" name="date" id="date3" placeholder="Date" disabled></label>
+                <label>Date:<input type="date" name="date3" id="date3" placeholder="Date" disabled></label>
 
                 <label>Coordinator/Manager: <input type="text" name="coordinator"
                         placeholder="Coordinator/Manager" required></label>

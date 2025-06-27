@@ -33,7 +33,8 @@ app.post("/enviar-formulario", async (req, res) => {
     doc.moveDown(1);
 
     const camposOrdenados = [
-      "folio","Requester_data","Name","user_email","Phone_number","date", "coordinator", "Statement_of_problem", "Goal_of_visit", "location", "Contact_data","Name_Supplier","email_supplier","phone_number_supplier", "contact_vwm", "visit_date"
+      "folio","Requester_data","Name","user_email","phone_number","date1","date2","date3", "coordinator", "Statement_of_problem", "Goal_of_visit", 
+      "location", "Contact_data","Name_Supplier","email_supplier","phone_number_supplier", "contact_vwm", "visit_date"
     ];
 
     camposOrdenados.forEach(key => {
@@ -123,7 +124,7 @@ if (Array.isArray(data["part_number[]"]) || data["part_number[]"]) {
       const mailOptions = {
         from: process.env.EMAIL_USER,
         to: ["gabriel.morales@proveed-vw.com.mx", data.user_email],
-        subject: "Formulario Blue Sheet recibido",
+        subject: "Blue Sheet form received.",
         text: "Attached you will find the completed form.",
         attachments: [{
           filename: `form_${cleanFolio}_${fechaHoy}.pdf`,
