@@ -101,15 +101,17 @@ function ocultarTodo() {
 }
 
 
-function addRow() {
-  const table = document.getElementById("partsTable").getElementsByTagName('tbody')[0];
+function addRow(button) {
+  const table = button.closest("form").querySelector("table tbody");
+  if (!table) return;
+
   const newRow = table.rows[0].cloneNode(true);
-  const inputs = newRow.getElementsByTagName('input');
-  for (let input of inputs) {
-    input.value = ""; // Clear the input values
-  }
+  const inputs = newRow.querySelectorAll("input");
+
+  inputs.forEach(input => input.value = "");
   table.appendChild(newRow);
 }
+
 
 
 
