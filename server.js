@@ -18,8 +18,7 @@ app.post("/enviar-formulario", async (req, res) => {
 
     const doc = new PDFDocument();
     const folio = data.folio || `sin_folio`;
-    const fechaHoy = new Date().toISOString().slice(0, 10); 
-
+    const fechaHoy = new Date().toISOString().slice(0, 10);
     const cleanFolio = folio.replace(/[^a-zA-Z0-9_-]/g, "_");
     const filePath = path.join(__dirname, `formulario_${cleanFolio}_${fechaHoy}.pdf`);
     const writeStream = fs.createWriteStream(filePath);
@@ -28,90 +27,109 @@ app.post("/enviar-formulario", async (req, res) => {
     doc.font('Helvetica-Bold').fontSize(18).text("Blue Sheet Support Request", { underline: true, align: 'center' });
     doc.moveDown(1);
 
+    // Tipo de formulario
     const tipoFormulario = data.form_type || "Desconocido";
     doc.font('Helvetica-Bold').fontSize(16).text(`Category: ${tipoFormulario}`);
     doc.moveDown(1);
 
-    const camposOrdenados = [
-      "folio","Requester_data","Name","user_email","phone_number","date1","date2","date3", "coordinator", "Statement_of_problem", "Goal_of_visit", 
-      "location", "Contact_data","Name_Supplier","email_supplier","phone_number_supplier", "contact_vwm", "visit_date"
+    // =============================
+    // SECCIONES DE DATOS
+    // =============================
+    const camposSecciones = [
+      { label: "Requester Data", keys: ["Name", "user_email", "phone_number"] },
+      { label: "Form Details", keys: ["date_today", "coordinator", "Statement_of_problem", "Goal_of_visit", "location"] },
+      { label: "Supplier Contact Data", keys: ["Name_Supplier", "email_supplier", "phone_number_supplier"] },
+      { label: "VWM Contact", keys: ["contact_vwm", "visit_date"] }
     ];
 
-    camposOrdenados.forEach(key => {
-      if (data[key]) {
-        const value = Array.isArray(data[key]) ? data[key].join(", ") : data[key];
-        doc.font('Helvetica-Bold').fontSize(12).text(`${key.toUpperCase()}:`);
-        doc.font('Helvetica').fontSize(12).text(value);
-        doc.moveDown(0.5);
-      }
+    // Folio primero
+    if (data.folio) {
+      doc.font('Helvetica-Bold').fontSize(12).text(`FOLIO:`);
+      doc.font('Helvetica').fontSize(12).text(data.folio);
+      doc.moveDown(0.5);
+    }
+
+    camposSecciones.forEach(section => {
+      doc.moveDown(1);
+      doc.font('Helvetica-Bold').fontSize(14).text(section.label);
+      doc.moveDown(0.5);
+
+      section.keys.forEach(key => {
+        if (data[key]) {
+          const value = Array.isArray(data[key]) ? data[key].join(", ") : data[key];
+          doc.font('Helvetica-Bold').fontSize(12).text(`${key.replace(/_/g, " ").toUpperCase()}:`);
+          doc.font('Helvetica').fontSize(12).text(value);
+          doc.moveDown(0.3);
+        }
+      });
     });
 
-// Helper para convertir a array si es string
-const toArray = (val) => Array.isArray(val) ? val : (val ? [val] : []);
+    // =============================
+    // TABLA DE DETALLES POR TIPO
+    // =============================
+    const toArray = (val) => Array.isArray(val) ? val : (val ? [val] : []);
 
-// Detectar tipo de formulario para ajustar la tabla
-if (Array.isArray(data["part_number[]"]) || data["part_number[]"]) {
-  const partNumbers = toArray(data["part_number[]"]);
-  const formType = data.form_type || "Unknown";
+    if (Array.isArray(data["part_number[]"]) || data["part_number[]"]) {
+      const partNumbers = toArray(data["part_number[]"]);
+      const formType = data.form_type || "Unknown";
 
-  doc.addPage();
-  doc.font('Helvetica-Bold').fontSize(14).text(`Part Details Table - ${formType}`);
-  doc.moveDown(1);
+      doc.addPage();
+      doc.font('Helvetica-Bold').fontSize(14).text(`Part Details Table - ${formType}`);
+      doc.moveDown(1);
 
-  partNumbers.forEach((_, i) => {
-    doc.font('Helvetica-Bold').text(`Row #${i + 1}`);
-    doc.font('Helvetica');
+      partNumbers.forEach((_, i) => {
+        doc.font('Helvetica-Bold').text(`Row #${i + 1}`);
+        doc.font('Helvetica');
 
-    doc.text(`Part Number: ${partNumbers[i] || ''}`);
+        doc.text(`Part Number: ${partNumbers[i] || ''}`);
 
-    // Campos comunes
-    if (formType === "Tool Evaluation") {
-      const quantityDelivered = toArray(data["quantity_delivered[]"]);
-      const project = toArray(data["project[]"]);
-      const nominatedCapacity = toArray(data["nominated_capacity[]"]);
-      const currentCapacity = toArray(data["current_capacity[]"]);
-      const tool = toArray(data["tool[]"]);
-      const estimatedQuantity = toArray(data["estimated_quantity[]"]);
+        if (formType === "Tool Evaluation") {
+          const quantityDelivered = toArray(data["quantity_delivered[]"]);
+          const project = toArray(data["project[]"]);
+          const nominatedCapacity = toArray(data["nominated_capacity[]"]);
+          const currentCapacity = toArray(data["current_capacity[]"]);
+          const tool = toArray(data["tool[]"]);
+          const estimatedQuantity = toArray(data["estimated_quantity[]"]);
 
-      doc.text(`Quantity Delivered: ${quantityDelivered[i] || ''}`);
-      doc.text(`Project: ${project[i] || ''}`);
-      doc.text(`Nominated Capacity: ${nominatedCapacity[i] || ''}`);
-      doc.text(`Current Capacity: ${currentCapacity[i] || ''}`);
-      doc.text(`Tool Refurbished (Yes/No): ${tool[i] || ''}`);
-      doc.text(`Estimated Quantity Until EOP: ${estimatedQuantity[i] || ''}`);
+          doc.text(`Quantity Delivered: ${quantityDelivered[i] || ''}`);
+          doc.text(`Project: ${project[i] || ''}`);
+          doc.text(`Nominated Capacity: ${nominatedCapacity[i] || ''}`);
+          doc.text(`Current Capacity: ${currentCapacity[i] || ''}`);
+          doc.text(`Tool Refurbished (Yes/No): ${tool[i] || ''}`);
+          doc.text(`Estimated Quantity Until EOP: ${estimatedQuantity[i] || ''}`);
+        }
+
+        else if (formType === "Capacity Evaluation") {
+          const project = toArray(data["project[]"]);
+          const nominatedCapacity = toArray(data["nominated_capacity[]"]);
+          const currentCapacity = toArray(data["current_capacity[]"]);
+          const ebr = toArray(data["ebr[]"]);
+          const cycleTime = toArray(data["cycle_time[]"]);
+
+          doc.text(`Project: ${project[i] || ''}`);
+          doc.text(`Nominated Capacity: ${nominatedCapacity[i] || ''}`);
+          doc.text(`Current Capacity: ${currentCapacity[i] || ''}`);
+          doc.text(`EBR(%): ${ebr[i] || ''}`);
+          doc.text(`Declared Cycle Time: ${cycleTime[i] || ''}`);
+        }
+
+        else if (formType === "Others") {
+          const project = toArray(data["project[]"]);
+          const nominatedCapacity = toArray(data["nominated_capacity[]"]);
+          const currentCapacity = toArray(data["current_capacity[]"]);
+
+          doc.text(`Project: ${project[i] || ''}`);
+          doc.text(`Nominated Capacity: ${nominatedCapacity[i] || ''}`);
+          doc.text(`Current Capacity: ${currentCapacity[i] || ''}`);
+        }
+
+        doc.moveDown(1);
+      });
     }
-
-    else if (formType === "Capacity Evaluation") {
-      const project = toArray(data["project[]"]);
-      const nominatedCapacity = toArray(data["nominated_capacity[]"]);
-      const currentCapacity = toArray(data["current_capacity[]"]);
-      const ebr = toArray(data["ebr[]"]);
-      const cycleTime = toArray(data["cycle_time[]"]);
-
-      doc.text(`Project: ${project[i] || ''}`);
-      doc.text(`Nominated Capacity: ${nominatedCapacity[i] || ''}`);
-      doc.text(`Current Capacity: ${currentCapacity[i] || ''}`);
-      doc.text(`EBR(%): ${ebr[i] || ''}`);
-      doc.text(`Declared Cycle Time: ${cycleTime[i] || ''}`);
-    }
-
-    else if (formType === "Others") {
-      const project = toArray(data["project[]"]);
-      const nominatedCapacity = toArray(data["nominated_capacity[]"]);
-      const currentCapacity = toArray(data["current_capacity[]"]);
-
-      doc.text(`Project: ${project[i] || ''}`);
-      doc.text(`Nominated Capacity: ${nominatedCapacity[i] || ''}`);
-      doc.text(`Current Capacity: ${currentCapacity[i] || ''}`);
-    }
-
-    doc.moveDown(1);
-  });
-}
-
 
     doc.end();
 
+    // Envío de correo
     writeStream.on("finish", async () => {
       const transporter = nodemailer.createTransport({
         service: "gmail",
@@ -127,26 +145,26 @@ if (Array.isArray(data["part_number[]"]) || data["part_number[]"]) {
         subject: "Blue Sheet form received.",
         text: "Attached you will find the completed form.",
         attachments: [{
-          filename: `form_${cleanFolio}_${fechaHoy}.pdf`,
+          filename: `formulario_${cleanFolio}_${fechaHoy}.pdf`,
           path: filePath
         }]
       };
 
       await transporter.sendMail(mailOptions);
-      console.log(`📧 Email successfully sent with attachment: form_${cleanFolio}_${fechaHoy}.pdf`);
+      console.log(`📧 Email successfully sent with attachment: formulario_${cleanFolio}_${fechaHoy}.pdf`);
       fs.unlinkSync(filePath);
 
-      res.status(200).json({ success: true, message: "Email successfully sent with attachment" });
+      res.status(200).json({ success: true, message: "Email sent successfully" });
     });
 
     writeStream.on("error", (err) => {
-      console.error("Error al escribir el PDF:", err);
-      res.status(500).json({ success: false, message: "Error al generar el PDF." });
+      console.error("Error writing PDF:", err);
+      res.status(500).json({ success: false, message: "Error generating PDF." });
     });
 
   } catch (err) {
     console.error("Error general:", err);
-    res.status(500).json({ success: false, message: "Error al enviar el formulario." });
+    res.status(500).json({ success: false, message: "Error processing form." });
   }
 });
 
