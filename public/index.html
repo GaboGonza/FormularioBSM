@@ -118,8 +118,13 @@
                 <br>
                 <hr>
                 <br>
-                <label>Date:<input type="date" name="date_today" id="date1" disabled></label>
-
+                <label>Date: <input type="date" id="date1" disabled>
+                <input type="hidden" name="date_today" id="date_hidden1">
+                </label>
+                <br>
+                <hr>
+                <br>
+                <label name="form_datails"><strong>Form Details</strong></label>
                 <label>Coordinator/Manager[reports to]: <input type="text" name="coordinator"
                         placeholder="Coordinator/Manager" required></label>
                 <label>Statement of problem:<input type="text" name="Statement_of_problem" placeholder="Statement of problem"
@@ -167,7 +172,10 @@
                 </table>
 
                 <button type="button" onclick="addRow()">Add Another Row</button>
-
+                <br>
+                <hr>
+                <br>
+                <label name="vwm_contact"><strong>VWM Contact</strong></label>
 
                 <label>Contact persons VWM (QA, TEC, Logistics): <input type="text" name="contact_vwm"
                         placeholder="Q VW:__________ ; DT VW:__________ ; LOG VW:__________" required></label>
@@ -186,17 +194,23 @@
                 <input type="hidden" name="form_type" value="Capacity Evaluation">
                 <label><strong>Capacity Evaluation</strong></label>
                 <label>Folio: <input type="text" name="folio" id="folio2" readonly></label>
-                <label name="Requester_data"><strong>Requester Data:</strong></label>
                 <br>
                 <hr>
                 <br>
+                <label name="Requester_data"><strong>Requester Data:</strong></label>
                 <label>Name: <input type="text" name="Name" placeholder="name" required></label>
                 <label>Email: <input type="email" name="user_email" placeholder="your@email.com" required></label>  
                 <label>Phone number: <input type="tel" name="Phone_number" id="phone" placeholder="xxx-xxxx-xxx"></label>
                 <br>
                 <hr>
                 <br>
-                <label>Date:<input type="date" name="date_today" id="date2" placeholder="Date" disabled></label>
+                <label>Date: <input type="date" id="date2" disabled>
+                <input type="hidden" name="date_today" id="date_hidden2">
+                </label>
+                <br>
+                <hr>
+                <br>
+                <label name="form_datails"><strong>Form Details</strong></label>
                 <label>Coordinator/Manager[reports to]:  <input type="text" name="coordinator"
                         placeholder="Coordinator/Manager" required></label>
                 <label>Statement of problem:<input type="text" name="Statement_of_problem"
@@ -239,6 +253,10 @@
                         <!-- Puedes duplicar esta fila para más entradas -->
                     </tbody>
                 </table>
+                <br>
+                <hr>
+                <br>
+                <label name="vwm_contact"><strong>VWM Contact</strong></label>
 
                 <button type="button" onclick="addRow()">Add Another Row</button>
                 <label>Contact persons VWM (QA, TEC, Logistics): <input type="text" name="contact_vwm"
@@ -269,8 +287,13 @@
                 <br>
                 <hr>
                 <br>
-                <label>Date:<input type="date" name="date_today" id="date3" placeholder="Date" disabled></label>
-
+                <label>Date: <input type="date" id="date3" disabled>
+                <input type="hidden" name="date_today" id="date_hidden3">
+                </label>
+                <br>
+                <hr>
+                <br>
+                <label name="form_datails"><strong>Form Details</strong></label>
                 <label>Coordinator/Manager: <input type="text" name="coordinator"
                         placeholder="Coordinator/Manager" required></label>
                 <label>Statement of problem:<input type="text" name="Statement_of_problem"
@@ -310,6 +333,10 @@
                 </table>
 
                 <button type="button" onclick="addRow()">Add Another Row</button>
+                <br>
+                <hr>
+                <br>
+                <label name="vwm_contact"><strong>VWM Contact</strong></label>
 
                 <label>Contact persons VWM (QA, TEC, Logistics): <input type="text" name="contact_vwm"
                         placeholder="Q VW:__________ ; DT VW:__________ ; LOG VW:__________" required></label>

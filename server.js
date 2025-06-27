@@ -29,7 +29,7 @@ app.post("/enviar-formulario", async (req, res) => {
 
     // Tipo de formulario
     const tipoFormulario = data.form_type || "Desconocido";
-    doc.font('Helvetica-Bold').fontSize(16).text(`Category: ${tipoFormulario}`);
+    doc.font('Helvetica-Bold').fontSize(14).text(`Category: ${tipoFormulario}`);
     doc.moveDown(1);
 
     // =============================
@@ -51,7 +51,7 @@ app.post("/enviar-formulario", async (req, res) => {
 
     camposSecciones.forEach(section => {
       doc.moveDown(1);
-      doc.font('Helvetica-Bold').fontSize(14).text(section.label);
+      doc.font('Helvetica-Bold').fontSize(12).text(section.label);
       doc.moveDown(0.5);
 
       section.keys.forEach(key => {

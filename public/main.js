@@ -23,17 +23,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  const hoy = new Date().toISOString().split('T')[0];
-  const camposFecha = ['date1', 'date2', 'date3'];
+  const camposFecha = [
+    { visible: 'date1', hidden: 'date_hidden1' },
+    { visible: 'date2', hidden: 'date_hidden2' },
+    { visible: 'date3', hidden: 'date_hidden3' }
+  ];
 
-  camposFecha.forEach(id => {
-    const campo = document.getElementById(id);
-    if (campo) {
-      campo.value = hoy;
+  const hoy = new Date().toISOString().split('T')[0];
+
+  camposFecha.forEach(({ visible, hidden }) => {
+    const visibleInput = document.getElementById(visible);
+    const hiddenInput = document.getElementById(hidden);
+    if (visibleInput && hiddenInput) {
+      visibleInput.value = hoy;
+      hiddenInput.value = hoy; // ✅ Esto asegura que sí se mande
     }
   });
 });
-
 
 
 
