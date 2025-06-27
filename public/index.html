@@ -101,6 +101,9 @@
             <button onclick="exit()">Exit</button>
         </div>
 
+
+
+
         <div id="formularioHerramentales" class="hidden section" >
             <p class="title-formulario"><strong>M-BSM support (Request Blue Sheet)</strong> <br><strong>Tool
                     Evaluation</strong></p>
@@ -247,18 +250,17 @@
                             <td><input type="text" name="project[]" required></td>
                             <td><input type="number" name="nominated_capacity[]" required ></td>
                             <td><input type="number" name="current_capacity[]" required ></td>
-                            <td><input type="number" name="ebr[]" required placeholder="YES/NO"></td>
+                            <td><input type="number" name="ebr[]" required placeholder="%"></td>
                             <td><input type="text" name="cycle_time[]" required></td>
                         </tr>
                         <!-- Puedes duplicar esta fila para más entradas -->
                     </tbody>
                 </table>
+                <button type="button" onclick="addRow()">Add Another Row</button>
                 <br>
                 <hr>
                 <br>
                 <label name="vwm_contact"><strong>VWM Contact</strong></label>
-
-                <button type="button" onclick="addRow()">Add Another Row</button>
                 <label>Contact persons VWM (QA, TEC, Logistics): <input type="text" name="contact_vwm"
                         placeholder="Q VW:__________ ; DT VW:__________ ; LOG VW:__________" required></label>
                 <label>Desired visit completion date: <input type="date" name="visit_date" placeholder="Date" required></label>
