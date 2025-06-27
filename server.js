@@ -36,8 +36,8 @@ app.post("/enviar-formulario", async (req, res) => {
     // SECCIONES DE DATOS
     // =============================
     const camposSecciones = [
-      { label: "Requester Data", keys: ["Name", "user_email", "phone_number"] },
-      { label: "Form Details", keys: ["date_today", "coordinator", "Statement_of_problem", "Goal_of_visit", "location"] },
+      { label: "Requester Data", keys: ["Name", "user_email", "phone_number","report_to"] },
+      { label: "Form Details", keys: ["request_date", "Statement_of_problem", "Goal_of_visit", "location"] },
       { label: "Supplier Contact Data", keys: ["Name_Supplier", "email_supplier", "phone_number_supplier"] },
       { label: "VWM Contact", keys: ["contact_vwm", "visit_date"] }
     ];
