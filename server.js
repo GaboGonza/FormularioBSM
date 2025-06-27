@@ -65,7 +65,7 @@ if (Array.isArray(data["part_number[]"]) || data["part_number[]"]) {
     doc.text(`Part Number: ${partNumbers[i] || ''}`);
 
     // Campos comunes
-    if (formType === "Tool-based Evaluation") {
+    if (formType === "Tool Evaluation") {
       const quantityDelivered = toArray(data["quantity_delivered[]"]);
       const project = toArray(data["project[]"]);
       const nominatedCapacity = toArray(data["nominated_capacity[]"]);
