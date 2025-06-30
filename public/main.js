@@ -161,7 +161,7 @@ function setupFormHandler(formId) {
       }
     });
 
-    fetch("/enviar-formulario", {
+    fetch("https://formulario-bsm.onrender.com/enviar-formulario", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -190,50 +190,7 @@ setupFormHandler("formularioEvaluacionOtros");
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  const formularios = [
-    "formularioEvaluacionHerramentales",
-    "formularioEvaluacionCapacidades",
-    "formularioEvaluacionOtros"
-  ];
 
-  formularios.forEach(id => {
-    const form = document.getElementById(id);
-    if (form) {
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const formData = new FormData(this);
-        const data = {};
-
-        formData.forEach((value, key) => {
-          if (key.endsWith("[]")) {
-            const cleanKey = key.replace("[]", "");
-            if (!data[cleanKey]) data[cleanKey] = [];
-            data[cleanKey].push(value);
-          } else {
-            data[key] = value;
-          }
-        });
-
-        fetch("https://formulario-bsm.onrender.com/enviar-formulario",{
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(data)
-        })
-          .then(response => response.json())
-          .then(result => {
-            alert(result.message);
-          })
-          .catch(err => {
-            alert("Error al enviar: " + err);
-          });
-      });
-    }
-  });
-});
 
 
 
