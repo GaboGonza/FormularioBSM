@@ -161,7 +161,7 @@ function setupFormHandler(formId) {
       }
     });
 
-    fetch("https://formulario-bsm.onrender.com/enviar-formulario", {
+    fetch("/enviar-formulario", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
