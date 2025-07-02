@@ -154,7 +154,7 @@ if (Array.isArray(data["part_number[]"]) || data["part_number[]"]) {
       };
 
       await transporter.sendMail(mailOptions);
-      console.log(`📧 Email successfully sent with attachment: formulario_${cleanFolio}_${fechaHoy}.pdf`);
+      console.log(`📧 Email successfully sent with attachment: form_${cleanFolio}_${fechaHoy}.pdf`);
       fs.unlinkSync(filePath);
 
       res.status(200).json({ success: true, message: "Email sent successfully" });
