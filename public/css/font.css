@@ -45,7 +45,8 @@ body {
     min-height: 100vh;
     padding: 20px;
     overflow-y: auto;
-    background-color: #003399;
+    background-color: #4682B4
+;
 }
 
 .section {
