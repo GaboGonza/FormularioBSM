@@ -17,7 +17,6 @@ app.post("/enviar-formulario", async (req, res) => {
     const data = req.body;
 
 const doc = new PDFDocument({ margin: 50 });
-doc.registerFont('emoji', path.join(__dirname, 'fonts', 'Symbola.ttf'));
 const folio = data.folio || `sin_folio`;
 const fechaHoy = new Date().toISOString().slice(0, 10);
 const cleanFolio = folio.replace(/[^a-zA-Z0-9_-]/g, "_");
