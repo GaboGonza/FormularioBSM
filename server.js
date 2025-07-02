@@ -26,7 +26,7 @@ doc.pipe(writeStream);
 
 // ==== TÍTULO CON FONDO AZUL ====
 doc.rect(50, 50, 500, 30).fill('#004080'); // fondo azul oscuro
-doc.fillColor('white').font('Helvetica-Bold').doc.font('emoji').fontSize(18).text(
+doc.fillColor('white').font('Helvetica-Bold').fontSize(18).text(
   'Blue Sheet Support Request',
   55, 55,
   { align: 'center', width: 490 }
