@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mes = String(fecha.getMonth() + 1).padStart(2, '0');
     const dia = String(fecha.getDate()).padStart(2, '0');
     const random = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-    return `FOL-${año}${mes}${dia}-${random}`;
+    return `Rpt. No.-${año}${mes}${dia}-${random}`;
   }
 });
 
