@@ -17,6 +17,7 @@ app.post("/enviar-formulario", async (req, res) => {
     const data = req.body;
 
 const doc = new PDFDocument({ margin: 50 });
+doc.registerFont('emoji', path.join(__dirname, 'fonts', 'Symbola.ttf'));
 const folio = data.folio || `sin_folio`;
 const fechaHoy = new Date().toISOString().slice(0, 10);
 const cleanFolio = folio.replace(/[^a-zA-Z0-9_-]/g, "_");
@@ -26,8 +27,8 @@ doc.pipe(writeStream);
 
 // ==== TÍTULO CON FONDO AZUL ====
 doc.rect(50, 50, 500, 30).fill('#004080'); // fondo azul oscuro
-doc.fillColor('white').font('Helvetica-Bold').fontSize(18).text(
-  'Blue Sheet Support Request',
+doc.fillColor('white').font('Helvetica-Bold').doc.font('emoji').fontSize(18).text(
+  '📄Blue Sheet Support Request✍️',
   55, 55,
   { align: 'center', width: 490 }
 );
