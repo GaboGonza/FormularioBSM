@@ -42,7 +42,7 @@ doc.moveDown(1);
 
 // ==== FOLIO ====
 if (data.folio) {
-  doc.font('Helvetica-Bold').text("FOLIO:", { continued: true });
+  doc.font('Helvetica-Bold').text("Report number:", { continued: true });
   doc.font('Helvetica').text(` ${data.folio}`);
   doc.moveDown(0.5);
 }
