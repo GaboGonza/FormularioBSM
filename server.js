@@ -20,7 +20,7 @@ const doc = new PDFDocument({ margin: 50 });
 const folio = data.folio || `sin_folio`;
 const fechaHoy = new Date().toISOString().slice(0, 10);
 const cleanFolio = folio.replace(/[^a-zA-Z0-9_-]/g, "_");
-const filePath = path.join(__dirname, `form_${cleanFolio}_${fechaHoy}.pdf`);
+const filePath = path.join(__dirname, `_${cleanFolio}_${fechaHoy}.pdf`);
 const writeStream = fs.createWriteStream(filePath);
 doc.pipe(writeStream);
 
