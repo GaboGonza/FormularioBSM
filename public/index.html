@@ -142,7 +142,7 @@
                 <label>Phone number: <input type="tel" name="phone_number_supplier" placeholder="+52 222 123 4567" pattern="^\+?[0-9\s\-]{7,15}$" autocomplete="tel" inputmode="tel" autocomplete="tel" required></label>
                 <br>
                 <hr style="border: none; border-top: 2px dotted black;">
-                <label><strong>Tabla</strong></label>
+                <label><strong><center>Tabla</center></strong></label>
 
                 <!-- Table inserted here -->
                 <table border="1" id="partsTable">
@@ -164,7 +164,13 @@
                             <td><input type="text" name="project[]" required></td>
                             <td><input type="number" name="nominated_capacity[]" required ></td>
                             <td><input type="number" name="current_capacity[]" required ></td>
-                            <td><input type="text" name="tool[]" required placeholder="YES/NO"></td>
+                            <td>
+                                <select name="tool[]" required>
+                                    <option value="">---Choose an option:---</option>
+                                    <option value="YES">YES</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                            </td>
                             <td><input type="number" name="estimated_quantity[]" required></td>
                         </tr>
                         <!-- Duplicar esta fila para más entradas -->
