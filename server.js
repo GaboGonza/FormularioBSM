@@ -148,7 +148,7 @@ if (Array.isArray(data["part_number[]"]) || data["part_number[]"]) {
         subject: "Blue Sheet form received.",
         text: "Attached you will find the completed form.",
         attachments: [{
-          filename: `form_${cleanFolio}_${fechaHoy}.pdf`,
+          filename: `${cleanFolio}_${fechaHoy}.pdf`,
           path: filePath
         }]
       };
