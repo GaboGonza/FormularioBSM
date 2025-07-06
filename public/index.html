@@ -13,15 +13,12 @@
 
     <div class="container">
         <div id="inicio">
-            <h1>🔵Blue Sheet / BSM Support Request</h1>
+            <h1>🔵Blue Sheet / LTM Support Request</h1>
             <br>
             <br>
-            <p class="description">📝Management and evaluation of support requests of the 'Blue Sheet' type for Series
-                parts, with a primary focus on assessing manufacturing capabilities, tooling evaluations, and other related
-                technical criteria.
-                This process aims to ensure that all support requests are thoroughly analyzed in terms of feasibility,
-                resource availability, and alignment with production standards, while also facilitating cross-functional collaboration between
-                engineering, quality, and procurement teams to drive informed decision-making and continuous improvement.✏️</p>
+            <p class="description">📝Welcome to the support platform for generating a Blue Sheet.✏️
+            The main focus of the support is on capacity evaluation, tooling condition, and other types of support requests.
+            </p>
 
             <div style="text-align: center; margin-top: 20px;">
                 <img src="img/request.png" style="max-width: 30%; height: auto;">
@@ -40,7 +37,7 @@
             <div class="evaluation-options">
                 <div class="evaluation-card" onclick="showSection('herramentales')">
                     <h3>Tool Evaluation</h3>
-                    <p>We request support for the evaluation of specific tooling
+                    <p>Select here to request support for the evaluation of specific tooling
                         with the objective of verifying the need for refurbishing, as well as conducting a general
                         assessment of the tool's usage and maintenance history since the Start of Production (SOP).</p>
                     <div style="text-align: center; margin-top: 20px;">
@@ -49,7 +46,7 @@
                 </div>
                 <div class="evaluation-card" onclick="showSection('capacidad')">
                     <h3>Capacity Evaluation</h3>
-                    <p>We request support for the evaluation and analysis of the production performance of suppliers
+                    <p>Select here to request support for the evaluation and analysis of the production performance of suppliers
                         who have been reported with supply issues due to lack of capacity in production equipment,
                         process-related problems,
                         cycle time verification, among other factors.</p>
@@ -59,10 +56,7 @@
                 </div>
                 <div class="evaluation-card" onclick="showSection('otros')">
                     <h3>Others</h3>
-                    <p>Handle additional or special evaluation requests.
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Ut consectetur dolorum facilis dicta alias quaerat quibusdam facere.
-                        Eos error ipsam consectetur omnis quos sequi temporibus voluptates! Dolores cum obcaecati nihil.
+                    <p>Select here to request support for special evaluation request.
                     </p>
                     <div style="text-align: center; margin-top: 20px;">
                         <img src="img/otros.png" style="max-width: 80%; height: auto;">
@@ -89,11 +83,9 @@
 
         <div id="mensajeNoApoyo" class="hidden section_small">
             <h4><strong>Support from M-BSM is not required.</strong></h4>
-            <p>-Please contact M-BSX to follow the appropriate steps.</p>
-            <p>-Contact the representative of that area.</p>
-            <p>*OCHOA MARTINEZ JESUS ANTONIO</p>
-            <div style="text-align: center; margin-top: 20px;">
-                <img src="img/img1.png" alt="Logo MBSX" style="max-width: 100%; height: auto;">
+            <!--<p>-Please contact M-BSX to follow the appropriate steps.</p>-->
+            <div style="text-align: center; margin-top: 10px;">
+                <img src="img/warn.png" alt="Logo MBSX" style="max-width: 100%; height: auto;">
             </div>
             <button onclick="exit()">Exit</button>
         </div>
@@ -102,7 +94,7 @@
 
 
         <div id="formularioHerramentales" class="hidden section" >
-            <p class="title-formulario"><strong>M-BSM support (Request Blue Sheet)</strong> <br><strong>Tool
+            <p class="title-formulario"><strong>LTM support (Request Blue Sheet)</strong> <br><strong>Tool
                     Evaluation</strong></p>
             <form id="formularioEvaluacionHerramentales">
                 <input type="hidden" name="form_type" value="Tool Evaluation">
@@ -195,7 +187,7 @@
         </div>
 
         <div id="formularioCapacidades" class="hidden section">
-            <p class="title-formulario"><strong>M-BSM support (Request Blue Sheet)</strong><br><strong>Capacity
+            <p class="title-formulario"><strong>LTM support (Request Blue Sheet)</strong><br><strong>Capacity
                     Evaluation</strong></p>
             <form id="formularioEvaluacionCapacidades">
                 <input type="hidden" name="form_type" value="Capacity Evaluation">
@@ -241,11 +233,11 @@
                     <thead>
                         <tr class="table-data">
                             <th>1. Part Number</th>
-                            <th>3. Project</th>
-                            <th>4. Nominated capacity</th>
-                            <th>5. Current capacity check (BKM)</th>
-                            <th>6. EBR(%)</th>
-                            <th>7. What is the declared cycle time?</th>
+                            <th>2. Project</th>
+                            <th>3. Nominated capacity</th>
+                            <th>4. Current capacity check (BKM)</th>
+                            <th>5. EBR(%)</th>
+                            <th>6. What is the declared cycle time?</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -278,7 +270,7 @@
 
 
         <div id="formularioOtros" class="hidden section">
-            <p class="title-formulario"><strong>M-BSM support (Request Blue Sheet)</strong><br><strong>Others</strong>
+            <p class="title-formulario"><strong>LTM support (Request Blue Sheet)</strong><br><strong>Others</strong>
             </p>
             <form id="formularioEvaluacionOtros" >
                 <input type="hidden" name="form_type" value="Others">
@@ -323,9 +315,9 @@
                     <thead>
                         <tr class="table-data">
                             <th>1. Part Number</th>
-                            <th>3. Project</th>
-                            <th>4. Nominated capacity</th>
-                            <th>5. Current capacity check (BKM)</th>
+                            <th>2. Project</th>
+                            <th>3. Nominated capacity</th>
+                            <th>4. Current capacity check (BKM)</th>
                         </tr>
                     </thead>
                     <tbody>
