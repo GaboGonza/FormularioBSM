@@ -74,18 +74,11 @@ function respuestaCoP(esCoP) {
   if (esCoP) {
     document.getElementById('mensajeNoApoyo').classList.remove('hidden');
   } else {
-    document.getElementById('filtro3').classList.remove('hidden');
+    document.getElementById('formularioHerramentales').classList.remove('hidden');;
   }
 }
 
-function respuestaCantidad(mayor800T) {
-  ocultarTodo();
-  if (mayor800T) {
-    document.getElementById('mensajeNoApoyo').classList.remove('hidden');
-  } else {
-    document.getElementById('formularioHerramentales').classList.remove('hidden');
-  }
-}
+
 
 
 function ocultarTodo() {
