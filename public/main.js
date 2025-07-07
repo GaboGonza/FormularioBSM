@@ -111,6 +111,15 @@ function mostrarImagen() {
   document.body.appendChild(overlay);
 }
 
+function respuestaCoP(esCoP) {
+  ocultarTodo();
+  if (esCoP) {
+    document.getElementById('mensajeNoApoyo').classList.remove('hidden');
+  } else {
+    document.getElementById('formularioHerramentales').classList.remove('hidden');;
+  }
+}
+
 
 
 
