@@ -68,62 +68,38 @@ function showSection(tipo) {
   }
 }
 
-//añadiendo una imagen
+
+
+// Imagen 1: libreta → muestra ejem1H.png
 document.addEventListener("DOMContentLoaded", () => {
   const libreta = document.getElementById("libreta");
   if (libreta) {
-    libreta.addEventListener("click", mostrarImagen);
+    libreta.addEventListener("click", mostrarImagen); // usa mostrarImagen()
   } else {
     console.error("No se encontró la imagen con ID 'libreta'");
   }
-});
 
-function mostrarImagen() {
-  const overlay = document.createElement("div");
-  overlay.style.position = "fixed";
-  overlay.style.top = "0";
-  overlay.style.left = "0";
-  overlay.style.width = "100%";
-  overlay.style.height = "100%";
-  overlay.style.backgroundColor = "rgba(0,0,0,0.8)";
-  overlay.style.display = "flex";
-  overlay.style.alignItems = "center";
-  overlay.style.justifyContent = "center";
-  overlay.style.zIndex = "9999";
-
-  const imagen = document.createElement("img");
-  imagen.src = "img/ejem1H.png"; // tu imagen en alta calidad
-  imagen.style.maxWidth = "90%";
-  imagen.style.maxHeight = "90%";
-  imagen.style.border = "5px solid white";
-  imagen.style.borderRadius = "10px";
-  imagen.style.boxShadow = "0 0 20px white";
-
-  imagen.addEventListener("click", (event) => {
-    event.stopPropagation(); // evita cerrar el overlay al hacer clic en la imagen
-  });
-
-  overlay.addEventListener("click", () => {
-    document.body.removeChild(overlay);
-  });
-
-  overlay.appendChild(imagen);
-  document.body.appendChild(overlay);
-}
-
-//añadiendo una imagen
-document.addEventListener("DOMContentLoaded", () => {
+  // Imagen 2: tabla → muestra ejemtable.png
   const table_ejem = document.getElementById("table_ejem");
   if (table_ejem) {
-    table_ejem.addEventListener("click", mostrarImagen);
+    table_ejem.addEventListener("click", mostrarImagenTabla); // usa mostrarImagenTabla()
   } else {
     console.error("No se encontró la imagen con ID 'table_ejem'");
   }
 });
 
+// Función para mostrar ejem1H.png
+function mostrarImagen() {
+  mostrarImagenOverlay("img/ejem1H.png");
+}
 
-
+// Función para mostrar ejemtable.png
 function mostrarImagenTabla() {
+  mostrarImagenOverlay("img/ejemtable.png");
+}
+
+// Función reutilizable que muestra imagen en overlay
+function mostrarImagenOverlay(src) {
   const overlay = document.createElement("div");
   overlay.style.position = "fixed";
   overlay.style.top = "0";
@@ -137,20 +113,15 @@ function mostrarImagenTabla() {
   overlay.style.zIndex = "9999";
 
   const imagen = document.createElement("img");
-  imagen.src = "img/ejemtable.png"; // tu imagen en alta calidad
+  imagen.src = src;
   imagen.style.maxWidth = "90%";
   imagen.style.maxHeight = "90%";
   imagen.style.border = "5px solid white";
   imagen.style.borderRadius = "10px";
   imagen.style.boxShadow = "0 0 20px white";
 
-  imagen.addEventListener("click", (event) => {
-    event.stopPropagation(); // evita cerrar el overlay al hacer clic en la imagen
-  });
-
-  overlay.addEventListener("click", () => {
-    document.body.removeChild(overlay);
-  });
+  imagen.addEventListener("click", (e) => e.stopPropagation());
+  overlay.addEventListener("click", () => document.body.removeChild(overlay));
 
   overlay.appendChild(imagen);
   document.body.appendChild(overlay);
