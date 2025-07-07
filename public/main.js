@@ -69,39 +69,45 @@ function showSection(tipo) {
 }
 
 //añadiendo una imagen
-document.getElementById("libreta").addEventListener("click", mostrarImagen);
+document.addEventListener("DOMContentLoaded", () => {
+  // Selecciona todas las imágenes con clase 'libreta'
+  const imagenesLibreta = document.querySelectorAll(".libreta");
+  imagenesLibreta.forEach(img => {
+    img.addEventListener("click", () => mostrarImagen("img/ejem.png")); // usa la imagen grande que quieras
+  });
+});
 
-function mostrarImagen() {
-    const overlay = document.createElement("div");
-    overlay.style.position = "fixed";
-    overlay.style.top = "0";
-    overlay.style.left = "0";
-    overlay.style.width = "100%";
-    overlay.style.height = "100%";
-    overlay.style.backgroundColor = "rgba(0,0,0,0.8)";
-    overlay.style.display = "flex";
-    overlay.style.alignItems = "center";
-    overlay.style.justifyContent = "center";
-    overlay.style.zIndex = "9999";
+function mostrarImagen(src) {
+  const overlay = document.createElement("div");
+  overlay.style.position = "fixed";
+  overlay.style.top = "0";
+  overlay.style.left = "0";
+  overlay.style.width = "100%";
+  overlay.style.height = "100%";
+  overlay.style.backgroundColor = "rgba(0,0,0,0.8)";
+  overlay.style.display = "flex";
+  overlay.style.alignItems = "center";
+  overlay.style.justifyContent = "center";
+  overlay.style.zIndex = "9999";
 
-    const imagen = document.createElement("img");
-    imagen.src = "img/ejem.png"; // <-- imagen en alta calidad
-    imagen.style.maxWidth = "90%";
-    imagen.style.maxHeight = "90%";
-    imagen.style.border = "5px solid white";
-    imagen.style.borderRadius = "10px";
-    imagen.style.boxShadow = "0 0 20px white";
+  const imagen = document.createElement("img");
+  imagen.src = src; // Imagen en alta calidad
+  imagen.style.maxWidth = "90%";
+  imagen.style.maxHeight = "90%";
+  imagen.style.border = "5px solid white";
+  imagen.style.borderRadius = "10px";
+  imagen.style.boxShadow = "0 0 20px white";
 
-    imagen.addEventListener("click", (event) => {
-        event.stopPropagation();
-    });
+  imagen.addEventListener("click", (event) => {
+    event.stopPropagation(); // para no cerrar el overlay al hacer clic sobre la imagen
+  });
 
-    overlay.addEventListener("click", () => {
-        document.body.removeChild(overlay);
-    });
+  overlay.addEventListener("click", () => {
+    document.body.removeChild(overlay);
+  });
 
-    overlay.appendChild(imagen);
-    document.body.appendChild(overlay);
+  overlay.appendChild(imagen);
+  document.body.appendChild(overlay);
 }
 
 function respuestaCoP(esCoP) {
