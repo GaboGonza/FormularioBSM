@@ -70,14 +70,15 @@ function showSection(tipo) {
 
 //añadiendo una imagen
 document.addEventListener("DOMContentLoaded", () => {
-  // Selecciona todas las imágenes con clase 'libreta'
-  const imagenesLibreta = document.querySelectorAll(".libreta");
-  imagenesLibreta.forEach(img => {
-    img.addEventListener("click", () => mostrarImagen("img/ejem.png")); // usa la imagen grande que quieras
-  });
+  const libreta = document.getElementById("libreta");
+  if (libreta) {
+    libreta.addEventListener("click", mostrarImagen);
+  } else {
+    console.error("No se encontró la imagen con ID 'libreta'");
+  }
 });
 
-function mostrarImagen(src) {
+function mostrarImagen() {
   const overlay = document.createElement("div");
   overlay.style.position = "fixed";
   overlay.style.top = "0";
@@ -91,7 +92,7 @@ function mostrarImagen(src) {
   overlay.style.zIndex = "9999";
 
   const imagen = document.createElement("img");
-  imagen.src = src; // Imagen en alta calidad
+  imagen.src = "img/ejem.png"; // tu imagen en alta calidad
   imagen.style.maxWidth = "90%";
   imagen.style.maxHeight = "90%";
   imagen.style.border = "5px solid white";
@@ -99,7 +100,7 @@ function mostrarImagen(src) {
   imagen.style.boxShadow = "0 0 20px white";
 
   imagen.addEventListener("click", (event) => {
-    event.stopPropagation(); // para no cerrar el overlay al hacer clic sobre la imagen
+    event.stopPropagation(); // evita cerrar el overlay al hacer clic en la imagen
   });
 
   overlay.addEventListener("click", () => {
@@ -108,15 +109,6 @@ function mostrarImagen(src) {
 
   overlay.appendChild(imagen);
   document.body.appendChild(overlay);
-}
-
-function respuestaCoP(esCoP) {
-  ocultarTodo();
-  if (esCoP) {
-    document.getElementById('mensajeNoApoyo').classList.remove('hidden');
-  } else {
-    document.getElementById('formularioHerramentales').classList.remove('hidden');;
-  }
 }
 
 
