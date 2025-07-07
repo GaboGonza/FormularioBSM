@@ -130,7 +130,6 @@ function mostrarImagenOverlay(src) {
 
 
 
-
 function respuestaCoP(esCoP) {
   ocultarTodo();
   if (esCoP) {
