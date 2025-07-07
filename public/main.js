@@ -92,7 +92,7 @@ function mostrarImagen() {
   overlay.style.zIndex = "9999";
 
   const imagen = document.createElement("img");
-  imagen.src = "img/ejem.png"; // tu imagen en alta calidad
+  imagen.src = "img/ejem1H.png"; // tu imagen en alta calidad
   imagen.style.maxWidth = "90%";
   imagen.style.maxHeight = "90%";
   imagen.style.border = "5px solid white";
@@ -110,6 +110,55 @@ function mostrarImagen() {
   overlay.appendChild(imagen);
   document.body.appendChild(overlay);
 }
+
+//añadiendo una imagen
+document.addEventListener("DOMContentLoaded", () => {
+  const table_ejem = document.getElementById("table_ejem");
+  if (table_ejem) {
+    table_ejem.addEventListener("click", mostrarImagen);
+  } else {
+    console.error("No se encontró la imagen con ID 'table_ejem'");
+  }
+});
+
+
+
+function mostrarImagenTabla() {
+  const overlay = document.createElement("div");
+  overlay.style.position = "fixed";
+  overlay.style.top = "0";
+  overlay.style.left = "0";
+  overlay.style.width = "100%";
+  overlay.style.height = "100%";
+  overlay.style.backgroundColor = "rgba(0,0,0,0.8)";
+  overlay.style.display = "flex";
+  overlay.style.alignItems = "center";
+  overlay.style.justifyContent = "center";
+  overlay.style.zIndex = "9999";
+
+  const imagen = document.createElement("img");
+  imagen.src = "img/ejemtable.png"; // tu imagen en alta calidad
+  imagen.style.maxWidth = "90%";
+  imagen.style.maxHeight = "90%";
+  imagen.style.border = "5px solid white";
+  imagen.style.borderRadius = "10px";
+  imagen.style.boxShadow = "0 0 20px white";
+
+  imagen.addEventListener("click", (event) => {
+    event.stopPropagation(); // evita cerrar el overlay al hacer clic en la imagen
+  });
+
+  overlay.addEventListener("click", () => {
+    document.body.removeChild(overlay);
+  });
+
+  overlay.appendChild(imagen);
+  document.body.appendChild(overlay);
+}
+
+
+
+
 
 function respuestaCoP(esCoP) {
   ocultarTodo();
