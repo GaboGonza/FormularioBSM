@@ -85,7 +85,7 @@ function mostrarImagen() {
     overlay.style.zIndex = "9999";
 
     const imagen = document.createElement("img");
-    imagen.src = "img/libreta_grande.png"; // <-- imagen en alta calidad
+    imagen.src = "img/ejem.png"; // <-- imagen en alta calidad
     imagen.style.maxWidth = "90%";
     imagen.style.maxHeight = "90%";
     imagen.style.border = "5px solid white";
