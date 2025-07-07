@@ -72,33 +72,20 @@ function showSection(tipo) {
 
 // Imagen 1: libreta → muestra ejem1H.png
 document.addEventListener("DOMContentLoaded", () => {
-  const libreta = document.getElementById("libreta");
-  if (libreta) {
-    libreta.addEventListener("click", mostrarImagen); // usa mostrarImagen()
-  } else {
-    console.error("No se encontró la imagen con ID 'libreta'");
-  }
-
-  // Imagen 2: tabla → muestra ejemtable.png
-  const table_ejem = document.getElementById("table_ejem");
-  if (table_ejem) {
-    table_ejem.addEventListener("click", mostrarImagenTabla); // usa mostrarImagenTabla()
-  } else {
-    console.error("No se encontró la imagen con ID 'table_ejem'");
-  }
+  // Selecciona todas las imágenes con clase .zoom-icon
+  document.querySelectorAll(".zoom-icon").forEach(img => {
+    img.addEventListener("click", () => {
+      const src = img.dataset.src;
+      if (src) {
+        mostrarImagenOverlay(src);
+      } else {
+        console.warn("Falta data-src en la imagen", img);
+      }
+    });
+  });
 });
 
-// Función para mostrar ejem1H.png
-function mostrarImagen() {
-  mostrarImagenOverlay("img/ejem1H.png");
-}
-
-// Función para mostrar ejemtable.png
-function mostrarImagenTabla() {
-  mostrarImagenOverlay("img/ejemtable.png");
-}
-
-// Función reutilizable que muestra imagen en overlay
+// Función que muestra imagen en pantalla completa
 function mostrarImagenOverlay(src) {
   const overlay = document.createElement("div");
   overlay.style.position = "fixed";
@@ -120,12 +107,18 @@ function mostrarImagenOverlay(src) {
   imagen.style.borderRadius = "10px";
   imagen.style.boxShadow = "0 0 20px white";
 
-  imagen.addEventListener("click", (e) => e.stopPropagation());
-  overlay.addEventListener("click", () => document.body.removeChild(overlay));
+  // Evita que al hacer clic sobre la imagen se cierre el overlay
+  imagen.addEventListener("click", e => e.stopPropagation());
+
+  // Cierra al hacer clic fuera de la imagen
+  overlay.addEventListener("click", () => {
+    document.body.removeChild(overlay);
+  });
 
   overlay.appendChild(imagen);
   document.body.appendChild(overlay);
 }
+
 
 
 

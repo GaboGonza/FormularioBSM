@@ -96,7 +96,7 @@
             <p class="title-formulario"><strong>LTM support (Request Blue Sheet)</strong> <br><strong>Tool
                     Evaluation</strong></p>
                 <div style="text-align: right; margin-top: 20px;">
-                        <img src="img/libreta.png" style="max-width: 5%; height: auto;" id="libreta" cursor: pointer;>
+                        <img src="img/libreta.png" class="zoom-icon" data-src="img/ejem1H.png" style="max-width: 5%; height: auto;"  cursor: pointer;>
                         <div style="font-size: 12px;">View example</div>
                 </div>
             <form id="formularioEvaluacionHerramentales">
@@ -138,7 +138,7 @@
                 <br>
                 <hr style="border: none; border-top: 2px dotted black;">
                 <div style="text-align: right; margin-top: 20px;">
-                        <img src="img/table.png" style="max-width: 3%; height: auto;" id="table_ejem" cursor: pointer;>
+                        <img src="img/table.png" class="zoom-icon" data-src="img/ejem1H" style="max-width: 3%; height: auto;" cursor: pointer;>
                         <div style="font-size: 12px;">View example</div>
                 </div>
                 <label><strong><center>Table</center></strong></label>
@@ -197,7 +197,8 @@
             <p class="title-formulario"><strong>LTM support (Request Blue Sheet)</strong><br><strong>Capacity
                     Evaluation</strong></p>
                 <div style="text-align: right; margin-top: 20px;">
-                    <img src="img/libreta.png" style="max-width: 5%; height: auto;" id="libreta">
+                        <img src="img/libreta.png" class="zoom-icon" data-src="img/ejemCapa.png" style="max-width: 5%; height: auto;" cursor: pointer;>
+                        <div style="font-size: 12px;">View example</div>
                 </div>
             <form id="formularioEvaluacionCapacidades">
                 <input type="hidden" name="form_type" value="Capacity Evaluation">
@@ -238,7 +239,7 @@
                 <br>
                 <hr style="border: none; border-top: 2px dotted black;">
                 <div style="text-align: right; margin-top: 20px;">
-                        <img src="img/table.png" style="max-width: 3%; height: auto;" id="table_ejem" cursor: pointer;>
+                        <img src="img/table.png" class="zoom-icon" data-src="img/tablecapa.png" style="max-width: 3%; height: auto;" cursor: pointer;>
                         <div style="font-size: 12px;">View example</div>
                 </div>
                 <label><strong><center>Table</center></strong></label>
@@ -285,9 +286,10 @@
 
         <div id="formularioOtros" class="hidden section">
             <p class="title-formulario"><strong>LTM support (Request Blue Sheet)</strong><br><strong>Others</strong></p>
-            <div style="text-align: right; margin-top: 20px;">
-                        <img src="img/libreta.png" style="max-width: 5%; height: auto;" id="libreta">
-            </div>
+                <div style="text-align: right; margin-top: 20px;">
+                        <img src="img/libreta.png" class="zoom-icon" data-src="img/ejemOtros-png" style="max-width: 5%; height: auto;"  cursor: pointer;>
+                        <div style="font-size: 12px;">View example</div>
+                </div>
             <form id="formularioEvaluacionOtros" >
                 <input type="hidden" name="form_type" value="Others">
                 <label><strong>Others</strong></label>
@@ -325,6 +327,11 @@
                 <label>Phone number: <input type="tel" name="phone_number_supplier" placeholder="+52 222 123 4567" pattern="^\+?[0-9\s\-]{7,15}$" autocomplete="tel" inputmode="tel" autocomplete="tel" required></label>
                 <br>
                 <hr style="border: none; border-top: 2px dotted black;">
+                <div style="text-align: right; margin-top: 20px;">
+                        <img src="img/table.png" class="zoom-icon" data-src="tableOtros.png" style="max-width: 3%; height: auto;" cursor: pointer;>
+                        <div style="font-size: 12px;">View example</div>
+                </div>
+                
                 <label><strong><center>Table</center></strong></label>
                                      <!-- Table inserted here -->
                 <table border="1" id="partsTable" align="center">
